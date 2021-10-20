@@ -1,10 +1,5 @@
 
 
-
-// let _callSubscriber = (state: stateType) => {
-//   console.log('jn')
-// }
-
 export type storeType = {
   _state: stateType
   getState: () => stateType
