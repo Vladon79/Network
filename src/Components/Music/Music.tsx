@@ -6,7 +6,7 @@ const Music = () => {
     return (
 
        <div>
-         Music
+         <button>+</button>
        </div>
   
     )

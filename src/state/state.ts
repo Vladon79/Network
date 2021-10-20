@@ -1,5 +1,4 @@
 
-
 export type storeType = {
   _state: stateType
   getState: () => stateType
