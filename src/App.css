@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+ul li {
+  list-style: georgian;
+}
+
+.app-wrapper{
+  margin: 0 auto;
+  display: grid;
+  width: 1200px;
+
+  grid-template-areas:
+"h h"
+"n c";
+
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 11fr;
+  /* grid-gap: 10px; */
+
+}
+
+.app-wrapper-content{
+  grid-area: c;
+  background-color: #F7F8F9;
+}
+textarea{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #333333;
+  color: #F7F8F9;
+}
+
+

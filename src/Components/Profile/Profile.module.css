@@ -1,0 +1,10 @@
+.profile{
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+}
+.profileInfo{
+    background-color: #66747A ;
+}
+
+
+  

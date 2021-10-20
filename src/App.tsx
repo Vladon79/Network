@@ -1,26 +1,52 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-function App() {
+import './App.css';
+import Dialogs from './Components/Dialogs/Dialogs';
+import Header from './Components/Header/Header';
+import Music from './Components/Music/Music';
+import Navbar from './Components/Navbar/Navbar';
+import News from './Components/News/News';
+import Profile from './Components/Profile/Profile';
+import Setting from './Components/Setting/Setting';
+import { storeType } from './state/state'
+type AppType = {
+  store: storeType
+}
+const App = ({ store, ...props }: AppType) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className='app-wrapper'>
+        <Header />
+        <Navbar friends={store._state.friendsPage.friends} />
+
+        <div className='app-wrapper-content'>
+
+          <Route path='/profile' render={() =>
+            <Profile
+              post={store._state.postPage.postData}
+              addPostCallBack={store.addPostCallBack.bind(store)}
+              NewPostMessage={store._state.postPage.NewPostMessage}
+              newPostChangeCallBack={store.newPostChangeCallBack.bind(store)} />}
+          />
+          <Route path='/dialogs' render={() =>
+            <Dialogs
+              newMessage={store._state.messagePage.newMessage}
+              messages={store._state.messagePage.masseges}
+              dialogs={store._state.messagePage.dialogs}
+              sendMessageCallBack={store.sendMessageCallBack.bind(store)}
+              newMessageChangeCallBack={store.newMessageChangeCallBack.bind(store)} />} />
+          <Route path='/news' render={() => <News />} />
+          <Route path='/music' render={() => <Music />} />
+          <Route path='/setting' render={() => <Setting />} />
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
+
+
+
 export default App;
+

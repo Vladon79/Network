@@ -1,0 +1,55 @@
+.dialogs{
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    background: linear-gradient(to right, #F7F8F9 220px, #66747A 23%);
+  
+}
+
+.dialogsItem{
+    padding: 10px;
+
+}
+
+.dialog a{
+    padding: 10px;
+    font-size: 28px;
+    text-decoration: none;
+    color: #333333;
+
+}
+
+.dialog a.active{
+    color: #FF6B00;
+
+}
+
+.messages{
+
+    font-size: 20px;
+    grid-template-columns: 5fr 5fr;
+    color: #F7F8F9;
+    /* background-color: #66747A ; */
+    padding: 10px;
+    
+}
+
+
+.dialog img{
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.addMessage{
+    text-align:right;
+    
+}
+
+.addMessage textarea{
+    width: 400px;
+}
+.addMessage button{
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+}

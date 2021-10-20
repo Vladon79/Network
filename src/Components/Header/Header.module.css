@@ -1,0 +1,10 @@
+.header{
+  grid-area: h;
+  background: linear-gradient( #66747A 15px, #333333 50%);
+  }
+.header img{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+    width: 50px;
+  }
