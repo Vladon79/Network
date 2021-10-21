@@ -7,11 +7,10 @@ import reportWebVitals from './reportWebVitals';
 
 
 
-const renderEntireTree = (state:stateType)=>{
+const renderEntireTree = (state: stateType) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App store={store} 
-      />
+      <App store={store} />
     </React.StrictMode>,
     document.getElementById('root')
   );

@@ -2,17 +2,17 @@ import React, { ChangeEvent } from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Messages from './Message/Message';
-import { messagesType, dialogsType } from './../../state/state'
+import { messagesType, dialogsType, ActionType } from './../../state/state'
 
 type DialogsType = {
   newMessage: string
   messages: Array<messagesType>
   dialogs: Array<dialogsType>
-  sendMessageCallBack: (sendMessage: string) => void
-  newMessageChangeCallBack: (newMessageText: string) => void
+  dispatch: (action: ActionType) => void
+
 }
 
-const Dialogs = ({ newMessageChangeCallBack, newMessage, messages, dialogs, sendMessageCallBack, ...props }: DialogsType) => {
+const Dialogs = ({ dispatch, newMessage, messages, dialogs, ...props }: DialogsType) => {
 
   const messagesElement = messages.map(m => <Messages textMesage={m.message} myMassege={m.myMessage} />)
   const dialogsElement = dialogs.map(d => <DialogItem name={d.name} id={d.id} ava={d.ava} />)
@@ -21,14 +21,14 @@ const Dialogs = ({ newMessageChangeCallBack, newMessage, messages, dialogs, send
 
   const sendMessageOnClickHandler = () => {
     if (sendMessage.current) {
-      sendMessageCallBack(sendMessage.current.value)
+      dispatch({ type: 'SEND-MESSAGE', sendMessage: sendMessage.current.value })
       sendMessage.current.value = ''
     }
   }
 
   const onChangeHandlerNewMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (sendMessage.current) {
-      newMessageChangeCallBack(sendMessage.current.value)
+      dispatch({ type: "NEW_MESSAGE-CHANGE", newMessageText: sendMessage.current.value })
     }
   }
 
