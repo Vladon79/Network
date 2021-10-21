@@ -1,17 +1,16 @@
 import React, { ChangeEvent } from 'react';
 import s from './MyPost.module.css';
 import Post from './Post/Post';
-import { postType } from './../../../state/state'
+import { ActionType, postType } from './../../../state/state'
 
 type MyPostType = {
   post: Array<postType>
-  addPostCallBack: (newPostAdd: string) => void
+  dispatch: (action: ActionType) => void
   NewPostMessage: string
-  newPostChangeCallBack: (NewPostText: string) => void
 }
 
 
-const MyPost = ({ newPostChangeCallBack, addPostCallBack, post, ...props }: MyPostType) => {
+const MyPost = ({ dispatch, post, ...props }: MyPostType) => {
 
 
   let postElements = post.map(p => <Post massage={p.message} like={p.numberLike} />)
@@ -20,14 +19,16 @@ const MyPost = ({ newPostChangeCallBack, addPostCallBack, post, ...props }: MyPo
 
   let addPostOnClickHandler = () => {
     if (newPostAdd.current) {
-      addPostCallBack(newPostAdd.current?.value)
+      // addPostCallBack(newPostAdd.current?.value)
+      dispatch({ type: 'ADD-POST', newPostAdd: newPostAdd.current?.value })
     }
   }
 
   const onChangeHandlerNewPost = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (newPostAdd.current) {
       let text = newPostAdd.current?.value
-      newPostChangeCallBack(text)
+      // newPostChangeCallBack(text)
+      dispatch({ type: 'NEW-POST-CHANGE', NewPostText: text })
     }
   }
 

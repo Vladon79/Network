@@ -8,7 +8,33 @@ export type storeType = {
   newPostChangeCallBack: (NewPostText: string) => void
   addPostCallBack: (newPostAdd: string) => void
   subscribe: (callback: (state: stateType) => void) => void
+  dispatch: (action: ActionType) => void
 }
+
+export type ActionType = AddPostActionType | NewPosrChangeActionType | SendMessageType | newMessageChangeType;
+
+type AddPostActionType = {
+  type: 'ADD-POST'
+  newPostAdd: string
+}
+
+type NewPosrChangeActionType = {
+  type: 'NEW-POST-CHANGE'
+  NewPostText: string
+}
+
+type SendMessageType = {
+  type: 'SEND-MESSAGE'
+  sendMessage: string
+}
+
+type newMessageChangeType = {
+  type: 'NEW_MESSAGE-CHANGE'
+  newMessageText: string
+}
+
+
+
 
 const store: storeType = {
   _state: {
@@ -50,9 +76,15 @@ const store: storeType = {
   getState() {
     return this._state
   },
+  subscribe(callback) {
+    this._callSubscriber = callback
+  },
+
   _callSubscriber(state: stateType) {
     console.log('Hello')
   },
+
+
   sendMessageCallBack(sendMessage: string) {
 
     const sendMessageData: messagesType = {
@@ -68,13 +100,14 @@ const store: storeType = {
     this._state.messagePage.newMessage = newMessageText
     this._callSubscriber(this._state)
   },
+
+
   newPostChangeCallBack(NewPostText: string) {
     this._state.postPage.NewPostMessage = NewPostText;
 
     this._callSubscriber(this._state)
 
   },
-
   addPostCallBack(newPostAdd: string) {
 
     const newPostAddData: postType = {
@@ -87,10 +120,38 @@ const store: storeType = {
     this._state.postPage.NewPostMessage = ''
     this._callSubscriber(this._state)
   },
-  subscribe(callback) {
-    this._callSubscriber = callback
-  }
+  dispatch(action) {
+    if (action.type === 'ADD-POST') {
+      const newPostAddData: postType = {
+        id: 5,
+        message: action.newPostAdd,
+        numberLike: 0
 
+      }
+      this._state.postPage.postData.push(newPostAddData)
+      this._state.postPage.NewPostMessage = ''
+      this._callSubscriber(this._state)
+    }
+    else if (action.type === 'NEW-POST-CHANGE') {
+      this._state.postPage.NewPostMessage = action.NewPostText;
+
+      this._callSubscriber(this._state)
+    }
+    else if (action.type === 'SEND-MESSAGE') {
+      const sendMessageData: messagesType = {
+        id: 6,
+        message: action.sendMessage,
+        myMessage: true
+      }
+      this._state.messagePage.masseges.push(sendMessageData)
+      this._state.messagePage.newMessage = ''
+      this._callSubscriber(this._state)
+    }
+    else if (action.type === 'NEW_MESSAGE-CHANGE') {
+      this._state.messagePage.newMessage = action.newMessageText
+      this._callSubscriber(this._state)
+    }
+  }
 }
 
 export default store

@@ -24,17 +24,17 @@ const App = ({ store, ...props }: AppType) => {
           <Route path='/profile' render={() =>
             <Profile
               post={store._state.postPage.postData}
-              addPostCallBack={store.addPostCallBack.bind(store)}
+              dispatch={store.dispatch.bind(store)}
               NewPostMessage={store._state.postPage.NewPostMessage}
-              newPostChangeCallBack={store.newPostChangeCallBack.bind(store)} />}
+            />}
           />
           <Route path='/dialogs' render={() =>
             <Dialogs
+              dispatch={store.dispatch.bind(store)}
               newMessage={store._state.messagePage.newMessage}
               messages={store._state.messagePage.masseges}
               dialogs={store._state.messagePage.dialogs}
-              sendMessageCallBack={store.sendMessageCallBack.bind(store)}
-              newMessageChangeCallBack={store.newMessageChangeCallBack.bind(store)} />} />
+              />} />
           <Route path='/news' render={() => <News />} />
           <Route path='/music' render={() => <Music />} />
           <Route path='/setting' render={() => <Setting />} />

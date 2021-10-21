@@ -2,16 +2,15 @@ import React from 'react';
 import MyPost from './MyPost/MyPost';
 import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import { postType } from './../../state/state'
+import { ActionType,  postType } from './../../state/state'
 
 type PostType = {
   post: Array<postType>
-  addPostCallBack: (newPostAdd: string) => void
+  dispatch:(action: ActionType) => void
   NewPostMessage: string
-  newPostChangeCallBack: (NewPostText: string) => void
 }
 
-const Profile = ({ newPostChangeCallBack,NewPostMessage, addPostCallBack, post, ...props }: PostType) => {
+const Profile = ({ NewPostMessage, dispatch, post, ...props }: PostType) => {
 
   return (
     <div className={s.profile}>
@@ -21,9 +20,8 @@ const Profile = ({ newPostChangeCallBack,NewPostMessage, addPostCallBack, post, 
       <div className={s.myPost}>
         <MyPost
           post={post}
-          addPostCallBack={addPostCallBack}
+          dispatch={dispatch}
           NewPostMessage={NewPostMessage}
-          newPostChangeCallBack={newPostChangeCallBack}
         />
       </div>
     </div>
