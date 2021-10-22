@@ -2,6 +2,7 @@ import React, { ChangeEvent } from 'react';
 import s from './MyPost.module.css';
 import Post from './Post/Post';
 import { ActionType, postType } from './../../../state/state'
+import { AddPostAC, NewPostChangeAC } from '../../../state/profile-reduser';
 
 type MyPostType = {
   post: Array<postType>
@@ -20,15 +21,14 @@ const MyPost = ({ dispatch, post, ...props }: MyPostType) => {
   let addPostOnClickHandler = () => {
     if (newPostAdd.current) {
       // addPostCallBack(newPostAdd.current?.value)
-      dispatch({ type: 'ADD-POST', newPostAdd: newPostAdd.current?.value })
+      dispatch(AddPostAC(newPostAdd.current?.value))
     }
   }
 
   const onChangeHandlerNewPost = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (newPostAdd.current) {
       let text = newPostAdd.current?.value
-      // newPostChangeCallBack(text)
-      dispatch({ type: 'NEW-POST-CHANGE', NewPostText: text })
+      dispatch(NewPostChangeAC(text) )
     }
   }
 

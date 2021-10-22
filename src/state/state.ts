@@ -1,3 +1,6 @@
+import { dialogsReduser, NewMessageChangeAC, SendMessageAC } from "./dialogs-reduser";
+import { friendsReduser } from "./friends-reduser";
+import { AddPostAC, NewPostChangeAC, profileReduser } from "./profile-reduser";
 
 export type storeType = {
   _state: stateType
@@ -13,27 +16,14 @@ export type storeType = {
 
 export type ActionType = AddPostActionType | NewPosrChangeActionType | SendMessageType | newMessageChangeType;
 
-type AddPostActionType = {
-  type: 'ADD-POST'
-  newPostAdd: string
-}
 
-type NewPosrChangeActionType = {
-  type: 'NEW-POST-CHANGE'
-  NewPostText: string
-}
+type AddPostActionType = ReturnType<typeof AddPostAC>;
 
-type SendMessageType = {
-  type: 'SEND-MESSAGE'
-  sendMessage: string
-}
+type NewPosrChangeActionType = ReturnType<typeof NewPostChangeAC>;
 
-type newMessageChangeType = {
-  type: 'NEW_MESSAGE-CHANGE'
-  newMessageText: string
-}
+type SendMessageType = ReturnType<typeof SendMessageAC>;
 
-
+type newMessageChangeType = ReturnType<typeof NewMessageChangeAC>;
 
 
 const store: storeType = {
@@ -121,38 +111,18 @@ const store: storeType = {
     this._callSubscriber(this._state)
   },
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
-      const newPostAddData: postType = {
-        id: 5,
-        message: action.newPostAdd,
-        numberLike: 0
 
-      }
-      this._state.postPage.postData.push(newPostAddData)
-      this._state.postPage.NewPostMessage = ''
-      this._callSubscriber(this._state)
-    }
-    else if (action.type === 'NEW-POST-CHANGE') {
-      this._state.postPage.NewPostMessage = action.NewPostText;
+    this._state.postPage = profileReduser(this._state.postPage, action)
+    this._state.messagePage = dialogsReduser(this._state.messagePage, action)
+    this._state.friendsPage = friendsReduser(this._state.friendsPage, action)
 
-      this._callSubscriber(this._state)
-    }
-    else if (action.type === 'SEND-MESSAGE') {
-      const sendMessageData: messagesType = {
-        id: 6,
-        message: action.sendMessage,
-        myMessage: true
-      }
-      this._state.messagePage.masseges.push(sendMessageData)
-      this._state.messagePage.newMessage = ''
-      this._callSubscriber(this._state)
-    }
-    else if (action.type === 'NEW_MESSAGE-CHANGE') {
-      this._state.messagePage.newMessage = action.newMessageText
-      this._callSubscriber(this._state)
-    }
+    this._callSubscriber(this._state)
   }
 }
+
+
+
+
 
 export default store
 
