@@ -3,6 +3,7 @@ import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Messages from './Message/Message';
 import { messagesType, dialogsType, ActionType } from './../../state/state'
+import { NewMessageChangeAC, SendMessageAC } from '../../state/dialogs-reduser';
 
 type DialogsType = {
   newMessage: string
@@ -21,14 +22,14 @@ const Dialogs = ({ dispatch, newMessage, messages, dialogs, ...props }: DialogsT
 
   const sendMessageOnClickHandler = () => {
     if (sendMessage.current) {
-      dispatch({ type: 'SEND-MESSAGE', sendMessage: sendMessage.current.value })
+      dispatch(SendMessageAC(sendMessage.current.value))
       sendMessage.current.value = ''
     }
   }
 
   const onChangeHandlerNewMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (sendMessage.current) {
-      dispatch({ type: "NEW_MESSAGE-CHANGE", newMessageText: sendMessage.current.value })
+      dispatch(NewMessageChangeAC(sendMessage.current.value))
     }
   }
 
