@@ -1,12 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { friendsPageType, FriendsType} from '../../state/state';
+import { AppStoreType } from '../../redux/redux-store';
+import { FriendsType } from '../../types/types';
 import { FriendsImgNavbar } from '../Friends/FriendsNavbar/FriendsIMGNavbar';
 import s from './Navbar.module.css';
 
 
-const Navbar = (props:friendsPageType) => {
-  const mappedFriends = props.friends.map((a: FriendsType) => (
+const Navbar = () => {
+  const friends = useSelector<AppStoreType,Array<FriendsType>>(state=>state.friendsPage.friends)
+  const mappedFriends = friends.map((a) => (
     <FriendsImgNavbar 
         name={a.name}
         ava={a.ava}

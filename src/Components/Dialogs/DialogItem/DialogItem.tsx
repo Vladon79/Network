@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { dialogsType } from '../../../types/types';
 import s from './../Dialogs.module.css';
-import {dialogsType} from './../../../state/state'
+
 
 
 const DialogItem = (props: dialogsType) => {
