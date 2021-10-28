@@ -1,17 +1,18 @@
 import React from 'react';
+import { postType } from '../../types/types';
 import MyPost from './MyPost/MyPost';
 import s from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import { ActionType,  postType } from './../../state/state'
+
 
 type PostType = {
   post: Array<postType>
-  dispatch:(action: ActionType) => void
   NewPostMessage: string
+  newPostChange: (text: string) => void
+  addPost: (text: string) => void
 }
 
-const Profile = ({ NewPostMessage, dispatch, post, ...props }: PostType) => {
-
+const Profile = (props: PostType) => {
   return (
     <div className={s.profile}>
       <div className={s.profileInfo}>
@@ -19,9 +20,10 @@ const Profile = ({ NewPostMessage, dispatch, post, ...props }: PostType) => {
       </div>
       <div className={s.myPost}>
         <MyPost
-          post={post}
-          dispatch={dispatch}
-          NewPostMessage={NewPostMessage}
+          post={props.post}
+          newPostChange={props.newPostChange}
+          addPost={props.addPost}
+          NewPostMessage={props.NewPostMessage}
         />
       </div>
     </div>

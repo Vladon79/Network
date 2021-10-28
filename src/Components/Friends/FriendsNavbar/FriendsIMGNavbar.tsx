@@ -1,5 +1,6 @@
 import React from "react"
-import { FriendsType } from "../../../state/state"
+import { FriendsType } from "../../../types/types"
+
 
 
 

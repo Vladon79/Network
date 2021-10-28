@@ -1,34 +1,30 @@
 import React, { ChangeEvent } from 'react';
+import { postType } from '../../../types/types';
 import s from './MyPost.module.css';
 import Post from './Post/Post';
-import { ActionType, postType } from './../../../state/state'
-import { AddPostAC, NewPostChangeAC } from '../../../state/profile-reduser';
 
 type MyPostType = {
   post: Array<postType>
-  dispatch: (action: ActionType) => void
   NewPostMessage: string
+  newPostChange: (text: string) => void
+  addPost: (text: string) => void
 }
 
 
-const MyPost = ({ dispatch, post, ...props }: MyPostType) => {
-
-
-  let postElements = post.map(p => <Post massage={p.message} like={p.numberLike} />)
-
+const MyPost = (props: MyPostType) => {
+  
+  let postElements = props.post.map(p => <Post massage={p.message} like={p.numberLike} />)
   let newPostAdd = React.createRef<HTMLTextAreaElement>()
 
   let addPostOnClickHandler = () => {
     if (newPostAdd.current) {
-      // addPostCallBack(newPostAdd.current?.value)
-      dispatch(AddPostAC(newPostAdd.current?.value))
+      props.addPost(newPostAdd.current?.value)
     }
   }
 
   const onChangeHandlerNewPost = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (newPostAdd.current) {
-      let text = newPostAdd.current?.value
-      dispatch(NewPostChangeAC(text) )
+      props.newPostChange(newPostAdd.current?.value)
     }
   }
 

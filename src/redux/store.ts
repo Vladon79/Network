@@ -1,29 +1,8 @@
-import { dialogsReduser, NewMessageChangeAC, SendMessageAC } from "./dialogs-reduser";
+
+import { messagesType, postType, stateType, storeType } from "../types/types";
+import { dialogsReduser } from "./dialogs-reduser";
 import { friendsReduser } from "./friends-reduser";
-import { AddPostAC, NewPostChangeAC, profileReduser } from "./profile-reduser";
-
-export type storeType = {
-  _state: stateType
-  getState: () => stateType
-  _callSubscriber: (state: stateType) => void
-  sendMessageCallBack: (sendMessage: string) => void
-  newMessageChangeCallBack: (newMessageText: string) => void
-  newPostChangeCallBack: (NewPostText: string) => void
-  addPostCallBack: (newPostAdd: string) => void
-  subscribe: (callback: (state: stateType) => void) => void
-  dispatch: (action: ActionType) => void
-}
-
-export type ActionType = AddPostActionType | NewPosrChangeActionType | SendMessageType | newMessageChangeType;
-
-
-type AddPostActionType = ReturnType<typeof AddPostAC>;
-
-type NewPosrChangeActionType = ReturnType<typeof NewPostChangeAC>;
-
-type SendMessageType = ReturnType<typeof SendMessageAC>;
-
-type newMessageChangeType = ReturnType<typeof NewMessageChangeAC>;
+import { profileReduser } from "./profile-reduser";
 
 
 const store: storeType = {
@@ -127,44 +106,6 @@ const store: storeType = {
 export default store
 
 
-export type friendsPageType = {
-  friends: Array<FriendsType>
-}
-export type FriendsType = {
-  name: string
-  ava: string
-}
 
-export type messagesType = {
-  id: number
-  message: string
-  myMessage: boolean
-}
-export type dialogsType = {
-  id: number
-  name: string
-  ava: string
-}
-export type postType = {
-  id: number
-  message: string
-  numberLike: number
-}
-export type messagesPageType = {
-  masseges: Array<messagesType>
-  dialogs: Array<dialogsType>
-  newMessage: string
-
-}
-export type postPageType = {
-  postData: Array<postType>
-  NewPostMessage: string
-}
-
-export type stateType = {
-  messagePage: messagesPageType
-  postPage: postPageType
-  friendsPage: friendsPageType
-}
 
 

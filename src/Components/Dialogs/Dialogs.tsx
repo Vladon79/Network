@@ -2,34 +2,35 @@ import React, { ChangeEvent } from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Messages from './Message/Message';
-import { messagesType, dialogsType, ActionType } from './../../state/state'
-import { NewMessageChangeAC, SendMessageAC } from '../../state/dialogs-reduser';
+import {  dialogsType, messagesType } from '../../types/types';
 
 type DialogsType = {
   newMessage: string
   messages: Array<messagesType>
   dialogs: Array<dialogsType>
-  dispatch: (action: ActionType) => void
-
+  NewMessageChange: (text: string) => void
+  SendMessage: (text: string) => void
 }
 
-const Dialogs = ({ dispatch, newMessage, messages, dialogs, ...props }: DialogsType) => {
+const Dialogs = (props: DialogsType) => {
 
-  const messagesElement = messages.map(m => <Messages textMesage={m.message} myMassege={m.myMessage} />)
-  const dialogsElement = dialogs.map(d => <DialogItem name={d.name} id={d.id} ava={d.ava} />)
+  const messagesElement = props.messages.map(m => <Messages textMesage={m.message} myMassege={m.myMessage} />)
+  const dialogsElement = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} ava={d.ava} />)
 
   const sendMessage = React.createRef<HTMLTextAreaElement>()
 
   const sendMessageOnClickHandler = () => {
     if (sendMessage.current) {
-      dispatch(SendMessageAC(sendMessage.current.value))
+      props.SendMessage(sendMessage.current.value)
+      console.log('ON'+sendMessage.current.value)
       sendMessage.current.value = ''
     }
   }
 
   const onChangeHandlerNewMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (sendMessage.current) {
-      dispatch(NewMessageChangeAC(sendMessage.current.value))
+      props.NewMessageChange(sendMessage.current.value)
+      console.log(props.newMessage)
     }
   }
 
@@ -43,16 +44,13 @@ const Dialogs = ({ dispatch, newMessage, messages, dialogs, ...props }: DialogsT
       <div className={s.messages}>
         {messagesElement}
         <div className={s.addMessage}>
-          <textarea ref={sendMessage} value={newMessage} onChange={onChangeHandlerNewMessage}></textarea>
+          <textarea ref={sendMessage} value={props.newMessage} onChange={onChangeHandlerNewMessage}></textarea>
 
-          <button onClick={sendMessageOnClickHandler}>/^\</button>
+          <button onClick={sendMessageOnClickHandler}>Send</button>
 
         </div>
       </div>
-
-
     </div>
-
   )
 }
 export default Dialogs;
