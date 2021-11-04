@@ -10,7 +10,7 @@ import reduxStore from './redux/redux-store';
 
 
 
-const renderEntireTree = (state: stateType) => {
+
   ReactDOM.render(
     <React.StrictMode>
       <Provider store={reduxStore}>
@@ -19,14 +19,14 @@ const renderEntireTree = (state: stateType) => {
     </React.StrictMode>,
     document.getElementById('root')
   );
-}
-renderEntireTree(reduxStore.getState())
+
+
 // let state = useSelector<AppStoreType, Array<stateType>>(s=>state)
-const subscribeRenderEntireTree = () => renderEntireTree(reduxStore.getState())
-reduxStore.subscribe(subscribeRenderEntireTree)
+// const subscribeRenderEntireTree = () => renderEntireTree(reduxStore.getState())
+// reduxStore.subscribe(subscribeRenderEntireTree)
 
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(); 

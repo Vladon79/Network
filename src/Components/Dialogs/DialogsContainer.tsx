@@ -1,10 +1,9 @@
-import React from 'react';
+
 import { NewMessageChangeAC, SendMessageAC } from '../../redux/dialogs-reduser';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
-import { ActionType, dialogsType, messagesType } from '../../types/types';
 import Dialogs from './Dialogs';
-import { Dispatch, Store } from 'redux';
+import { Dispatch } from 'redux';
 
 // type DialogsType = {
 //   store: Store<any, ActionType>
@@ -14,7 +13,7 @@ import { Dispatch, Store } from 'redux';
 
 //   const dialogs = useSelector<AppStoreType, Array<dialogsType>>(state => state.messagePage.dialogs)
 //   const messages = useSelector<AppStoreType, Array<messagesType>>(state => state.messagePage.masseges)
-//   const newMessage = useSelector<AppStoreType, string>(state => state.messagePage.newMessage)
+// const newMessage = useSelector<AppStoreType, string>(state => state.messagePage.newMessage)
 
 //   const SendMessage = (text: string) => {
 //     store.dispatch(SendMessageAC(text))
