@@ -1,9 +1,6 @@
-import React from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
-import { ActionType, postType, stateType } from '../../types/types';
 import Profile from './Profile';
-import { Store } from 'redux';
 import { AddPostAC, NewPostChangeAC } from '../../redux/profile-reduser';
 
 // type PostType = {

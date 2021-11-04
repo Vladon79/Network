@@ -13,24 +13,28 @@ const InitialState: InitialStateType = {
 }
 
 export const profileReduser = (state: postPageType = InitialState, action: ActionType) => {
-  if (action.type === 'ADD-POST') {
-    const newPostAddData: postType = {
-      id: 5,
-      message: action.newPostAdd,
-      numberLike: 0
-
+  switch (action.type) {
+    case 'ADD-POST': {
+      const newPostAddData: postType = {
+        id: 5,
+        message: action.newPostAdd,
+        numberLike: 0
+      };
+      let copyState = { ...state }
+      copyState.postData = [ ...state.postData ]
+      copyState.postData.push(newPostAddData)
+      copyState.NewPostMessage = ''
+      return copyState
     }
-    state.postData.push(newPostAddData)
-    state.NewPostMessage = ''
 
+    case 'NEW-POST-CHANGE':
+      let copyState = { ...state }
+      copyState.NewPostMessage = action.NewPostText;
+      return copyState;
+
+    default:
+      return state;
   }
-  else if (action.type === 'NEW-POST-CHANGE') {
-    state.NewPostMessage = action.NewPostText;
-
-  }
-
-  return state;
-
 }
 
 export const AddPostAC = (newPostAdd: string) => {
