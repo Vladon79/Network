@@ -13,7 +13,7 @@ type MyPostType = {
 
 const MyPost = (props: MyPostType) => {
   
-  let postElements = props.post.map(p => <Post massage={p.message} like={p.numberLike} />)
+  let postElements = props.post.map(p => <Post key={p.id} massage={p.message} like={p.numberLike} />)
   let newPostAdd = React.createRef<HTMLTextAreaElement>()
 
   let addPostOnClickHandler = () => {
