@@ -11,9 +11,11 @@ const Navbar = () => {
   const friends = useSelector<AppStoreType, Array<FriendsType>>(state => state.friendsPage.friends)
   const mappedFriends = friends.map((a) => (
     <FriendsImgNavbar
-      key={a.name}
+      id={a.id}
+      key={a.id}
       name={a.name}
       ava={a.ava}
+      friends={a.friends}
     />))
   return (
     <nav className={s.nav}>
