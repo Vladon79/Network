@@ -1,4 +1,5 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
+import { AddFriendsAC, RemoveFriendsAC, SetFriendsAC } from "../redux/friends-reduser";
 
 import { AddPostAC, NewPostChangeAC } from "../redux/profile-reduser";
 
@@ -6,6 +7,13 @@ export type friendsPageType = {
     friends: Array<FriendsType>
 }
 export type FriendsType = {
+    id: number
+    friends: boolean
+    status?: string
+    location?: {
+        city: string
+        country: string
+    }
     name: string
     ava: string
 }
@@ -54,8 +62,19 @@ export type storeType = {
     dispatch: (action: ActionType) => void
 }
 
-export type ActionType = AddPostActionType | NewPosrChangeActionType | SendMessageType | newMessageChangeType;
+export type ActionType = AddPostActionType |
+    NewPosrChangeActionType |
+    SendMessageType |
+    newMessageChangeType |
+    AddFriendsActionType |
+    RemoveFriendsActionType |
+    SetFriendsActionType;
 
+export type SetFriendsActionType = ReturnType<typeof SetFriendsAC>;
+
+export type RemoveFriendsActionType = ReturnType<typeof RemoveFriendsAC>;
+
+export type AddFriendsActionType = ReturnType<typeof AddFriendsAC>;
 
 export type AddPostActionType = ReturnType<typeof AddPostAC>;
 

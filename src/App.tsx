@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Store } from 'redux';
 import './App.css';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
+import FriendsContainer from './Components/Friends/FriendsContainer';
 import Header from './Components/Header/Header';
 import Music from './Components/Music/Music';
 import Navbar from './Components/Navbar/Navbar';
@@ -28,16 +29,17 @@ const App = (props: AppType) => {
 
           <Route path='/profile' render={() =>
             <ProfileContainer
-              // store={props.store}
+            // store={props.store}
             />}
           />
           <Route path='/dialogs' render={() =>
             <DialogsContainer
-              // store={props.store}
+            // store={props.store}
             />} />
-          <Route path='/news' render={() => <News/>} />
+          <Route path='/news' render={() => <News />} />
           <Route path='/music' render={() => <Music />} />
           <Route path='/setting' render={() => <Setting />} />
+          <Route path='/friends' render={() => <FriendsContainer />} />
         </div>
       </div>
     </BrowserRouter>

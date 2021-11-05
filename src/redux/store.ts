@@ -1,7 +1,8 @@
 
 import { messagesType, postType, stateType, storeType } from "../types/types";
 import { dialogsReduser } from "./dialogs-reduser";
-import { friendsReduser } from "./friends-reduser";
+
+
 import { profileReduser } from "./profile-reduser";
 
 
@@ -36,9 +37,9 @@ const store: storeType = {
     },
     friendsPage: {
       friends: [
-        { name: 'Pavel', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
-        { name: 'Artyr', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
-        { name: 'Dima', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
+        { id: 1, friends: true, status: 'Super', location: { country: 'Belarus', city: 'Brest' }, name: 'Pavel', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
+        { id: 2, friends: true, status: 'Friends', location: { country: 'Belarus', city: 'Brest' }, name: 'Artyr', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
+        { id: 3, friends: true, status: 'Bos', location: { country: 'Belarus', city: 'Brest' }, name: 'Dima', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
       ]
     }
   },
@@ -93,7 +94,7 @@ const store: storeType = {
 
     this._state.postPage = profileReduser(this._state.postPage, action)
     this._state.messagePage = dialogsReduser(this._state.messagePage, action)
-    this._state.friendsPage = friendsReduser(this._state.friendsPage, action)
+    // this._state.friendsPage = friendsReduserNav(this._state.friendsPage, action)
 
     this._callSubscriber(this._state)
   }
