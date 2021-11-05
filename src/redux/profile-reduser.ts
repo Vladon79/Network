@@ -20,18 +20,16 @@ export const profileReduser = (state: postPageType = InitialState, action: Actio
         message: action.newPostAdd,
         numberLike: 0
       };
-      let copyState = { ...state }
-      copyState.postData = [ ...state.postData ]
-      copyState.postData.push(newPostAddData)
-      copyState.NewPostMessage = ''
-      return copyState
+      return {
+        ...state,
+        postData: [...state.postData, newPostAddData],
+        NewPostMessage: ''
+      }
     }
 
     case 'NEW-POST-CHANGE':
-      let copyState = { ...state }
-      copyState.NewPostMessage = action.NewPostText;
-      return copyState;
-
+      return { ...state, NewPostMessage: action.NewPostText }
+      
     default:
       return state;
   }

@@ -24,7 +24,7 @@ const InitialState: InitialStateTipe = {
 }
 
 export const dialogsReduser = (state: messagesPageType = InitialState, action: ActionType) => {
-
+   
     switch (action.type) {
         case 'SEND-MESSAGE': {
             const sendMessageData: messagesType = {
@@ -32,16 +32,22 @@ export const dialogsReduser = (state: messagesPageType = InitialState, action: A
                 message: action.sendMessage,
                 myMessage: true
             }
-            let stateCopy = { ...state }
-            stateCopy.masseges = [...state.masseges]
-            stateCopy.masseges.push(sendMessageData)
-            stateCopy.newMessage = ''
-            return stateCopy;
+            return  {
+                ...state,
+                masseges: [...state.masseges, sendMessageData],
+                newMessage:''
+            }
+            // stateCopy.masseges.push(sendMessageData)
+            // stateCopy.newMessage = ''
+            
         }
         case 'NEW_MESSAGE-CHANGE': {
-            let stateCopy = { ...state }
-            stateCopy.newMessage = action.newMessageText
-            return stateCopy;
+            return {
+                ...state,
+                newMessage: action.newMessageText
+            }
+            // stateCopy.newMessage = action.newMessageText
+          
         }
         default:
             return state;

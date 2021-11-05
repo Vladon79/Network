@@ -8,11 +8,12 @@ import s from './Navbar.module.css';
 
 
 const Navbar = () => {
-  const friends = useSelector<AppStoreType,Array<FriendsType>>(state=>state.friendsPage.friends)
+  const friends = useSelector<AppStoreType, Array<FriendsType>>(state => state.friendsPage.friends)
   const mappedFriends = friends.map((a) => (
-    <FriendsImgNavbar 
-        name={a.name}
-        ava={a.ava}
+    <FriendsImgNavbar
+      key={a.name}
+      name={a.name}
+      ava={a.ava}
     />))
   return (
     <nav className={s.nav}>
@@ -34,9 +35,9 @@ const Navbar = () => {
       <div className={s.item}>
         <NavLink to='/friends' activeClassName={s.active}>Friends</NavLink>
         <div>
-      
-         {mappedFriends}
-          
+
+          {mappedFriends}
+
         </div>
       </div>
     </nav>
