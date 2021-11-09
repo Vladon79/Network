@@ -5,9 +5,17 @@
 }
 
 .dialogsItem{
+    border-radius: 10px;
+    margin: 2px;
     padding: 10px;
-    background-color: #f7f8f9;
+    background-color: #66747A;
 }
+
+/* .dialog{
+    background-color: #333333;
+    border-radius: 10px;
+    margin: 1px;
+} */
 
 
 
@@ -25,12 +33,19 @@
 }
 
 .messages{
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    text-align: left;
+    border-radius: 10px;
+    margin: 2px;
     font-size: 20px;
     color: #F7F8F9;
     background-color: #66747A ;
     padding: 10px;
     
 }
+
+
 
 
 .dialog img{
@@ -41,6 +56,9 @@
 
 .addMessage{
     text-align:right;
+    margin: 10px;
+    background-color: #F7F8F9;
+    border-radius: 10px;
     
 }
 
@@ -50,4 +68,11 @@
 .addMessage button{
     width: 50px;
     height: 50px;
+}
+.textarea{
+    width: 97.5%; 
+    height: 60px;
+    margin: 4px;
+    border-radius: 5px;
+    resize: none;
 }

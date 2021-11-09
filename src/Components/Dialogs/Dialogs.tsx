@@ -22,7 +22,7 @@ const Dialogs = (props: DialogsType) => {
   const sendMessageOnClickHandler = () => {
     if (sendMessage.current) {
       props.SendMessage(sendMessage.current.value)
-      console.log('ON'+sendMessage.current.value)
+     
       sendMessage.current.value = ''
     }
   }
@@ -30,7 +30,7 @@ const Dialogs = (props: DialogsType) => {
   const onChangeHandlerNewMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (sendMessage.current) {
       props.NewMessageChange(sendMessage.current.value)
-      console.log(props.newMessage)
+      
     }
   }
 
@@ -42,9 +42,10 @@ const Dialogs = (props: DialogsType) => {
       </div>
 
       <div className={s.messages}>
-        {messagesElement}
+        <div>{messagesElement}</div>
+        
         <div className={s.addMessage}>
-          <textarea ref={sendMessage} value={props.newMessage} onChange={onChangeHandlerNewMessage}></textarea>
+          <textarea ref={sendMessage} value={props.newMessage} onChange={onChangeHandlerNewMessage} className={s.textarea}></textarea>
 
           <button onClick={sendMessageOnClickHandler}>Send</button>
 

@@ -23,3 +23,7 @@
     height: 50px;
     border-radius: 40px;
 }
+.imgFriends{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
