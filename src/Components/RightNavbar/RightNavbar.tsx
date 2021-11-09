@@ -4,21 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { AppStoreType } from '../../redux/redux-store';
 import { FriendsType } from '../../types/types';
 import { FriendsImgNavbar } from '../Friends/FriendsNavbar/FriendsIMGNavbar';
-import s from './Navbar.module.css';
+import s from './RightNavbar.module.css';
 
 
-const Navbar = () => {
-  const friends = useSelector<AppStoreType, Array<FriendsType>>(state => state.friendsPage.friends)
-  const mappedFriends = friends.map((a) => (
-    <FriendsImgNavbar
-      id={a.id}
-      key={a.id}
-      name={a.name}
-      ava={a.ava}
-      friends={a.friends}
-    />))
-  return (
-    <nav className={s.nav}>
+const RightNavbar = () => {
+    return(
+        <nav className={s.nav}>
       <div className={s.item}>
         <NavLink to='/profile' activeClassName={s.active}>Profile</NavLink>
       </div>
@@ -47,6 +38,6 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  )
+    )
 }
-export default Navbar;
+export default RightNavbar;

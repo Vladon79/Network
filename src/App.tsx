@@ -9,6 +9,7 @@ import Music from './Components/Music/Music';
 import Navbar from './Components/Navbar/Navbar';
 import News from './Components/News/News';
 import ProfileContainer from './Components/Profile/ProfileContainer';
+import RightNavbar from './Components/RightNavbar/RightNavbar';
 import Setting from './Components/Setting/Setting';
 import { ActionType } from './types/types';
 
@@ -24,6 +25,7 @@ const App = (props: AppType) => {
       <div className='app-wrapper'>
         <Header />
         <Navbar />
+        <RightNavbar/>
 
         <div className='app-wrapper-content'>
 

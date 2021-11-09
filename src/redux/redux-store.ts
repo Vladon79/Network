@@ -7,7 +7,7 @@ import { friendsReduser } from './friends-reduser';
 
 const redusers = combineReducers({
     postPage: profileReduser,
-    friendsPage1: friendsReduserNav,
+    // friendsPage1: friendsReduserNav,
     messagePage: dialogsReduser,
     friendsPage:friendsReduser
 })

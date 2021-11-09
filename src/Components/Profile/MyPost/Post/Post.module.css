@@ -1,5 +1,11 @@
 .item{
-    color: #333333;
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    background-color: #66747A;
+    color: #f7f8f9;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 10px;
   }
   .item img{
       width: 70px;
@@ -7,6 +13,12 @@
       border-radius: 40px;
   }
   .like_color{
-
+      padding-right: 50px;
+      text-align: right;
       color: red;
+  }
+
+  .massageLike{
+      display: grid;
+      grid-template-rows:1fr 25px;
   }

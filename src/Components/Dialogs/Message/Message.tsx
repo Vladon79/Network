@@ -1,4 +1,5 @@
 import React from 'react';
+import s from './Message.module.css'
 
 
 type PropsMessege = {
@@ -11,7 +12,7 @@ const Messages = ({ textMesage, myMassege, ...props }: PropsMessege) => {
 
   return (
     
-      <div>
+      <div className={myMassege ? s.YoutextMesage :  s.MytextMesage}>
         {textMesage}
       </div>
       
