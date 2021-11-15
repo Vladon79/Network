@@ -7,9 +7,8 @@ import { friendsReduser } from './friends-reduser';
 
 const redusers = combineReducers({
     postPage: profileReduser,
-    // friendsPage1: friendsReduserNav,
     messagePage: dialogsReduser,
-    friendsPage:friendsReduser
+    friendsPage: friendsReduser
 })
 
 export type AppStoreType = ReturnType<typeof redusers>

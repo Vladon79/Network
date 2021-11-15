@@ -15,11 +15,11 @@ const mapStateToProps = (state: AppStoreType) => {
 const mapDispachToProps = (dispatch: any) => {
     return {
         AddFriends: (friendsID: number) => {
-            console.log(friendsID)
+           
             dispatch(AddFriendsAC(friendsID))
         },
         RemoveFriends: (friendsID: number) => {
-            console.log(friendsID)
+           
             dispatch(RemoveFriendsAC(friendsID))
         },
         SetFriends: (friends: Array<FriendsType>) => {

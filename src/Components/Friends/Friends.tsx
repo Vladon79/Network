@@ -1,6 +1,9 @@
+import axios from "axios";
+import { userInfo } from "os";
 import React from "react";
 import { FriendsType } from "../../types/types";
 import s from './Friends.module.css';
+import userPhoto from './../../assents/image/user.png'
 
 type FriendsPageType = {
     friends: Array<FriendsType>
@@ -11,6 +14,14 @@ type FriendsPageType = {
 
 const Friends = (props: FriendsPageType) => {
 
+    if (props.friends.length === 0) {
+
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            console.log(response.data.items)
+            props.SetFriends(response.data.items)
+        });
+
+    }
 
 
     return (
@@ -20,12 +31,12 @@ const Friends = (props: FriendsPageType) => {
             {props.friends.map(f => <div key={f.id} className={s.friendsPage}>
                 <div className={s.AvaButton}>
                     <div className={s.avaDiv}>
-                        <img src={f.ava} className={s.ava} />
+                        <img src={f.ava ? f.ava : userPhoto} className={s.ava} />
                     </div>
                     <div className={s.buttonDiv}>
                         {f.friends ?
                             <button onClick={() => props.RemoveFriends(f.id)} className={s.button}>Remove</button>
-                            : <button onClick={() => { props.AddFriends(f.id)}} className={s.button}>Add</button>}
+                            : <button onClick={() => { props.AddFriends(f.id) }} className={s.button}>Add</button>}
 
                     </div>
                 </div>
