@@ -23,7 +23,7 @@
 .textarea{
     width: 97.5%; 
     height: 60px;
-    margin: 4px;
+    margin: 5px;
     border-radius: 5px;
     resize: none;
 }
@@ -40,6 +40,6 @@
     text-align: center;
     background-color: #333333;
     border-radius: 10px;
-    margin: 2px;
+    margin: 5px;
     color: #F7F8F9;
 }

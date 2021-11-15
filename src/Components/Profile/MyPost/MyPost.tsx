@@ -48,11 +48,12 @@ const MyPost = (props: MyPostType) => {
 
       </div>
       <div className={s.MyPostName}>
-        <h3>My post</h3>
+        
 
-      </div>
-
+      
+      <h3>My post</h3>
       {postElements}
+      </div>
     </div >
 
   )
