@@ -2,14 +2,14 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { AppStoreType } from '../../redux/redux-store';
-import { FriendsType } from '../../types/types';
+import { UsersType } from '../../types/types';
 import { FriendsImgNavbar } from '../Friends/FriendsNavbar/FriendsIMGNavbar';
 import s from './Navbar.module.css';
 
 
 const Navbar = () => {
-  const friends = useSelector<AppStoreType, Array<FriendsType>>(state => state.friendsPage.friends)
-  const mappedFriends = friends.map((a) => (
+  const users = useSelector<AppStoreType, Array<UsersType>>(state => state.usersPage.users)
+  const mappedFriends = users.map((a) => (
     <FriendsImgNavbar
       id={a.id}
       key={a.id}
@@ -23,7 +23,7 @@ const Navbar = () => {
         <NavLink to='/profile' activeClassName={s.active}>Profile</NavLink>
       </div>
       <div className={s.item}>
-        <NavLink to='/friends' activeClassName={s.active}>Friends</NavLink>
+        <NavLink to='/users' activeClassName={s.active}>Users</NavLink>
         <div>
           <div className={s.imgFriends}>
             {/* {mappedFriends} */}

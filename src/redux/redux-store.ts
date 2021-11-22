@@ -1,14 +1,13 @@
 import { dialogsReduser } from './dialogs-reduser';
-import { friendsReduserNav } from './friends-reduserNavbar';
 import { profileReduser } from './profile-reduser';
 import { combineReducers, createStore } from 'redux';
-import { friendsReduser } from './friends-reduser';
+import {  usersReduser } from './users-reduser';
 
 
 const redusers = combineReducers({
     postPage: profileReduser,
     messagePage: dialogsReduser,
-    friendsPage: friendsReduser
+    usersPage: usersReduser
 })
 
 export type AppStoreType = ReturnType<typeof redusers>

@@ -1,12 +1,15 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
-import { AddFriendsAC, RemoveFriendsAC, SetFriendsAC } from "../redux/friends-reduser";
+import { AddUsersAC, RemoveUsersAC, SetCurrentPageAC, SetTotalUsersCountAC, SetUsersAC } from "../redux/users-reduser";
 
 import { AddPostAC, NewPostChangeAC } from "../redux/profile-reduser";
 
-export type friendsPageType = {
-    friends: Array<FriendsType>
+export type usersPageType = {
+    users: Array<UsersType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
-export type FriendsType = {
+export type UsersType = {
     id: number
     friends: boolean
     status?: string
@@ -47,7 +50,7 @@ export type postPageType = {
 export type stateType = {
     messagePage: messagesPageType
     postPage: postPageType
-    friendsPage: friendsPageType
+    friendsPage: usersPageType
 }
 
 export type storeType = {
@@ -68,13 +71,19 @@ export type ActionType = AddPostActionType |
     newMessageChangeType |
     AddFriendsActionType |
     RemoveFriendsActionType |
+    SetCurrentPageActionType |
+    SetTotalUsersCountActionType |
     SetFriendsActionType;
 
-export type SetFriendsActionType = ReturnType<typeof SetFriendsAC>;
+export type SetTotalUsersCountActionType = ReturnType<typeof SetTotalUsersCountAC>;
 
-export type RemoveFriendsActionType = ReturnType<typeof RemoveFriendsAC>;
+export type SetCurrentPageActionType = ReturnType<typeof SetCurrentPageAC>;
 
-export type AddFriendsActionType = ReturnType<typeof AddFriendsAC>;
+export type SetFriendsActionType = ReturnType<typeof SetUsersAC>;
+
+export type RemoveFriendsActionType = ReturnType<typeof RemoveUsersAC>;
+
+export type AddFriendsActionType = ReturnType<typeof AddUsersAC>;
 
 export type AddPostActionType = ReturnType<typeof AddPostAC>;
 
