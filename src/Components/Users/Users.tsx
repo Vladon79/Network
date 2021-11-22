@@ -2,26 +2,24 @@ import axios from "axios";
 import { userInfo } from "os";
 import React from "react";
 import { UsersType } from "../../types/types";
-import s from './Friends.module.css';
+import s from './Users.module.css';
 import userPhoto from './../../assents/image/user.png'
 
-type FriendsPageType = {
+type UsersPageType = {
     friends: Array<UsersType>
     AddFriends: (friendsID: number) => void
     RemoveFriends: (friendsID: number) => void
     SetFriends: (friends: Array<UsersType>) => void
 }
 
-const Friends = (props: FriendsPageType) => {
+const Users = (props: UsersPageType) => {
 
     if (props.friends.length === 0) {
-
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            console.log(response.data.items)
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {                       
             props.SetFriends(response.data.items)
         });
-
     }
+    
 
 
     return (
@@ -56,4 +54,4 @@ const Friends = (props: FriendsPageType) => {
     )
 }
 
-export default Friends
+export default Users

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { AppStoreType } from '../../redux/redux-store';
-import { FriendsType } from '../../types/types';
+import { UsersType } from '../../types/types';
 import { FriendsImgNavbar } from '../Friends/FriendsNavbar/FriendsIMGNavbar';
 import s from './RightNavbar.module.css';
 

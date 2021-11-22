@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
 import Friends from './Friends';
-import { AddFriendsAC, RemoveFriendsAC, SetFriendsAC } from '../../redux/friends-reduser';
-import { FriendsType } from '../../types/types';
+import { AddUsersAC, RemoveUsersAC, SetUsersAC } from '../../redux/users-reduser';
+import { UsersType } from '../../types/types';
+
 
 
 const mapStateToProps = (state: AppStoreType) => {
     return {
-        friends: state.friendsPage.friends
+        friends: state.usersPage.users
 
     }
 }
@@ -16,14 +17,14 @@ const mapDispachToProps = (dispatch: any) => {
     return {
         AddFriends: (friendsID: number) => {
            
-            dispatch(AddFriendsAC(friendsID))
+            dispatch(AddUsersAC(friendsID))
         },
         RemoveFriends: (friendsID: number) => {
            
-            dispatch(RemoveFriendsAC(friendsID))
+            dispatch(RemoveUsersAC(friendsID))
         },
-        SetFriends: (friends: Array<FriendsType>) => {
-            dispatch(SetFriendsAC(friends))
+        SetFriends: (friends: Array<UsersType>) => {
+            dispatch(SetUsersAC(friends))
         }
 
     }

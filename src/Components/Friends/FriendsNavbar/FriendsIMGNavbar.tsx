@@ -1,10 +1,10 @@
 import React from "react"
-import { FriendsType } from "../../../types/types"
+import { UsersType } from "../../../types/types"
 
 
 
 
-export const FriendsImgNavbar = (props: FriendsType) => {
+export const FriendsImgNavbar = (props: UsersType) => {
 
     return (
         <div>
