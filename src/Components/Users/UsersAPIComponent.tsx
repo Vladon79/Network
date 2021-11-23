@@ -1,10 +1,8 @@
-import { connect } from 'react-redux';
-import { AppStoreType } from '../../redux/redux-store';
-import {  AddUsersAC, RemoveUsersAC, SetCurrentPageAC, SetTotalUsersCountAC, SetUsersAC,} from '../../redux/users-reduser';
 import axios from "axios";
 import React from "react";
 import { UsersType } from "../../types/types";
 import Users from "./Users";
+
 
 type UsersPageType = {
     users: Array<UsersType>
@@ -17,7 +15,8 @@ type UsersPageType = {
     setCurrentPage: (currentPage: number) => void
     SetTotalUsersCount: (totalUsersCount: number) => void
 }
-class UsersContainer extends React.Component<UsersPageType>{
+
+class UsersAPIComponent extends React.Component<UsersPageType>{
 
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
@@ -51,36 +50,4 @@ class UsersContainer extends React.Component<UsersPageType>{
     }
 }
 
-const mapStateToProps = (state: AppStoreType) => {
-    
-    return {
-        users: state.usersPage.users , 
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,  
-        currentPage:state.usersPage.currentPage
-    }
-}
-
-const mapDispachToProps = (dispatch: any) => {
-    return {
-        AddUsers: (usersID: number) => {
-            dispatch(AddUsersAC(usersID))
-            
-        },
-        RemoveUsers: (usersID: number) => {
-            dispatch(RemoveUsersAC(usersID))
-        },
-        SetUsers: (users: Array<UsersType>) => {
-           
-            dispatch(SetUsersAC(users))
-        },
-        setCurrentPage:(currentPage:number)=>{
-            dispatch(SetCurrentPageAC(currentPage))
-        },
-        SetTotalUsersCount:(totalUsersCount: number) =>{
-            dispatch(SetTotalUsersCountAC(totalUsersCount))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispachToProps)(UsersContainer);
+export default UsersAPIComponent
