@@ -1,11 +1,20 @@
 import React from 'react';
+import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+type ProfileInfoType = {
+  profile:any
+}
+
+const ProfileInfo = (props:ProfileInfoType) => {
+
+  if(!props.profile){
+    return <Preloader/>
+  }
   return (
     <div className={s.PrfileInfo}>
       <div className={s.PrfileInfoImg}>
-        <img className={s.ava} src='https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' />
+        <img className={s.ava} src={props.profile.photos.large} />
       </div>
       <div className={s.discriptionInfo}>
         Vlad Klopot

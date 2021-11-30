@@ -2,6 +2,7 @@ import React from "react";
 import { UsersType } from "../../types/types";
 import s from './Users.module.css';
 import userPhoto from './../../assents/image/user.png'
+import { NavLink } from "react-router-dom";
 
 type UsersPageTypeProps = {
     totalUsersCount: number
@@ -33,27 +34,29 @@ const Users = (props: UsersPageTypeProps) => {
             </div>
 
             {
-                props.users.map(f => <div key={f.id} className={s.friendsPage}>
+                props.users.map(u => <div key={u.id} className={s.friendsPage}>
                     <div className={s.AvaButton}>
                         <div className={s.avaDiv}>
-                            <img src={f.ava ? f.ava : userPhoto} className={s.ava} />
+                            <NavLink to={'/profile/'+ u.id}>
+                            <img src={u.ava ? u.ava : userPhoto} className={s.ava} />
+                            </NavLink>
                         </div>
                         <div className={s.buttonDiv}>
-                            {f.friends ?
-                                <button onClick={() => props.RemoveUsers(f.id)} className={s.button}>Remove</button>
+                            {u.friends ?
+                                <button onClick={() => props.RemoveUsers(u.id)} className={s.button}>Remove</button>
                                 :
-                                <button onClick={() => props.AddUsers(f.id)} className={s.button}>Add</button>}
+                                <button onClick={() => props.AddUsers(u.id)} className={s.button}>Add</button>}
 
                         </div>
                     </div>
 
                     <div className={s.NameStatus}>
-                        <div className={s.name}>{f.name}</div>
-                        <div>status:{f.status}</div>
+                        <div className={s.name}>{u.name}</div>
+                        <div>status:{u.status}</div>
                     </div>
                     <div>
-                        <div>country:{f.location?.country}</div>
-                        <div>city:{f.location?.city}</div>
+                        <div>country:{u.location?.country}</div>
+                        <div>city:{u.location?.city}</div>
                     </div>
 
                 </div>)

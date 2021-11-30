@@ -10,6 +10,7 @@ const InitialState: InitialStateType = {
     { id: 2, message: 'Haw are you?', numberLike: 20 },
     { id: 3, message: "It's my firs post!", numberLike: 100 }
   ],
+  profile:null
 }
 
 export const profileReduser = (state: postPageType = InitialState, action: ActionType) => {
@@ -29,7 +30,10 @@ export const profileReduser = (state: postPageType = InitialState, action: Actio
 
     case 'NEW-POST-CHANGE':
       return { ...state, NewPostMessage: action.NewPostText }
-      
+
+    case 'SET-USER-PROFILE':
+      return { ...state, profile: action.profile }
+
     default:
       return state;
   }
@@ -43,9 +47,15 @@ export const AddPostAC = (newPostAdd: string) => {
 }
 
 export const NewPostChangeAC = (NewPostText: string) => {
-  console.log(NewPostText)
   return {
     type: 'NEW-POST-CHANGE',
     NewPostText: NewPostText
+  } as const
+}
+
+export const setUsersProfile = (profile: any) => {
+  return {
+    type: 'SET-USER-PROFILE',
+    profile
   } as const
 }
