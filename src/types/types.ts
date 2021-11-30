@@ -1,5 +1,5 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
-import { AddUsersAC, RemoveUsersAC, SetCurrentPageAC, SetTotalUsersCountAC, SetUsersAC, ToggleIsFetchingAC } from "../redux/users-reduser";
+import { addUsers, removeUsers, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching } from "../redux/users-reduser";
 
 import { AddPostAC, NewPostChangeAC } from "../redux/profile-reduser";
 
@@ -77,17 +77,17 @@ export type ActionType = AddPostActionType |
     SetFriendsActionType |
     ToggleIsFetchingActionType;
 
-export type ToggleIsFetchingActionType = ReturnType<typeof ToggleIsFetchingAC>;
+export type ToggleIsFetchingActionType = ReturnType<typeof toggleIsFetching>;
 
-export type SetTotalUsersCountActionType = ReturnType<typeof SetTotalUsersCountAC>;
+export type SetTotalUsersCountActionType = ReturnType<typeof setTotalUsersCount>;
 
-export type SetCurrentPageActionType = ReturnType<typeof SetCurrentPageAC>;
+export type SetCurrentPageActionType = ReturnType<typeof setCurrentPage>;
 
-export type SetFriendsActionType = ReturnType<typeof SetUsersAC>;
+export type SetFriendsActionType = ReturnType<typeof setUsers>;
 
-export type RemoveFriendsActionType = ReturnType<typeof RemoveUsersAC>;
+export type RemoveFriendsActionType = ReturnType<typeof removeUsers>;
 
-export type AddFriendsActionType = ReturnType<typeof AddUsersAC>;
+export type AddFriendsActionType = ReturnType<typeof addUsers>;
 
 export type AddPostActionType = ReturnType<typeof AddPostAC>;
 
