@@ -1,50 +1,58 @@
+import React from "react"
 import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
-import Profile from './Profile';
-import { AddPostAC, NewPostChangeAC } from '../../redux/profile-reduser';
+import Profile, { ProfileType } from './Profile';
+import { AddPostAC, NewPostChangeAC, setUsersProfile } from '../../redux/profile-reduser';
+import { postType } from "../../types/types";
+import axios from "axios";
 
-// type PostType = {
-//   store: Store<any, ActionType>
-// }
+type ProfileContainerType = {
+  profile: any
+  post: Array<postType>
+  NewPostMessage: string
+  newPostChange: (text: string) => void
+  addPost: (text: string) => void
+  setUsersProfile: (profile: ProfileType) => void
+}
 
-// const ProfileContainer = (props: PostType) => {
-//   const post = useSelector<AppStoreType, Array<postType>>(state => state.postPage.postData)
-//   const NewPostMessage = useSelector<AppStoreType, string>(state => state.postPage.NewPostMessage)
+class ProfileContainer extends React.Component<ProfileContainerType> {
+  componentDidMount() {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+      .then(response => {
+        debugger
+        this.props.setUsersProfile(response.data)
+        // this.props.setTotalUsersCount(100)
 
-//   const newPostChange = (text: string) => {
-//     props.store.dispatch(NewPostChangeAC(text))
-
-//   }
-
-//   const addPost = (text: string) => {
-//     props.store.dispatch(AddPostAC(text))
-//   }
-
-//   return <Profile
-//     post={post}
-//     addPost={addPost}
-//     newPostChange={newPostChange}
-//     NewPostMessage={NewPostMessage}
-//   />
-// }
-
-const mapStateToProps = (state: AppStoreType) => {
-  return {
-    post: state.postPage.postData,
-    NewPostMessage:state.postPage.NewPostMessage
+      });
+  }
+  render() {
+    return (
+      <Profile {...this.props} profile={this.props.profile} />
+    )
   }
 }
 
-const mapDispachToProps = (dispatch:any) => {
+const mapStateToProps = (state: AppStoreType) => {
   return {
-    addPost:(text: string)=>{
+    profile: state.postPage.profile,
+    post: state.postPage.postData,
+    NewPostMessage: state.postPage.NewPostMessage
+  }
+}
+
+const mapDispachToProps = (dispatch: any) => {
+  return {
+    addPost: (text: string) => {
       dispatch(AddPostAC(text))
     },
-    newPostChange:(text: string)=>{
+    newPostChange: (text: string) => {
       dispatch(NewPostChangeAC(text))
+    },
+    setUsersProfile: (profile: ProfileType) => {
+      dispatch(setUsersProfile(profile))
     }
   }
 }
 
-const ProfileContainer = connect(mapStateToProps, mapDispachToProps)(Profile);
-export default ProfileContainer;
+
+export default connect(mapStateToProps, mapDispachToProps)(ProfileContainer);

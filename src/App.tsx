@@ -30,7 +30,6 @@ const App = (props: AppType) => {
 
           <Route path='/profile' render={() =>
             <ProfileContainer
-           
             />}
           />
           <Route path='/dialogs' render={() =>

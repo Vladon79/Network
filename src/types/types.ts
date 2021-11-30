@@ -1,7 +1,7 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
 import { addUsers, removeUsers, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching } from "../redux/users-reduser";
 
-import { AddPostAC, NewPostChangeAC } from "../redux/profile-reduser";
+import { AddPostAC, NewPostChangeAC, setUsersProfile } from "../redux/profile-reduser";
 
 export type usersPageType = {
     users: Array<UsersType>
@@ -46,6 +46,7 @@ export type messagesPageType = {
 export type postPageType = {
     postData: Array<postType>
     NewPostMessage: string
+    profile:any
 }
 
 export type stateType = {
@@ -67,7 +68,8 @@ export type storeType = {
 }
 
 export type ActionType = AddPostActionType |
-    NewPosrChangeActionType |
+    NewPostChangeActionType |
+    setUsersProfileActionType |
     SendMessageType |
     newMessageChangeType |
     AddFriendsActionType |
@@ -76,6 +78,8 @@ export type ActionType = AddPostActionType |
     SetTotalUsersCountActionType |
     SetFriendsActionType |
     ToggleIsFetchingActionType;
+
+export type setUsersProfileActionType = ReturnType<typeof setUsersProfile>;
 
 export type ToggleIsFetchingActionType = ReturnType<typeof toggleIsFetching>;
 
@@ -91,7 +95,7 @@ export type AddFriendsActionType = ReturnType<typeof addUsers>;
 
 export type AddPostActionType = ReturnType<typeof AddPostAC>;
 
-export type NewPosrChangeActionType = ReturnType<typeof NewPostChangeAC>;
+export type NewPostChangeActionType = ReturnType<typeof NewPostChangeAC>;
 
 export type SendMessageType = ReturnType<typeof SendMessageAC>;
 
