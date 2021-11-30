@@ -74,42 +74,42 @@ export const usersReduser = (state: usersPageType = InitialState, action: Action
     }
 }
 
-export const AddUsersAC = (usersID: number) => {
+export const addUsers = (usersID: number) => {
     return {
         type: 'ADD-USERS',
         usersID
 
     } as const
 }
-export const RemoveUsersAC = (usersID: number) => {
+export const removeUsers = (usersID: number) => {
     return {
         type: 'REMOVE-USERS',
         usersID
     } as const
 }
 
-export const SetUsersAC = (users: Array<UsersType>) => {
+export const setUsers = (users: Array<UsersType>) => {
     return {
         type: 'SET-USERS',
         users
     } as const
 }
 
-export const SetCurrentPageAC = (currentPage: number) => {
+export const setCurrentPage = (currentPage: number) => {
     return {
         type: 'SET-CURRENT-PAGE',
         currentPage
     } as const
 }
 
-export const SetTotalUsersCountAC = (totalUsersCount: number) => {
+export const setTotalUsersCount = (totalUsersCount: number) => {
     return {
         type: 'SET-TOTAL-USERS-COUNT',
         totalUsersCount
     } as const
 }
 
-export const ToggleIsFetchingAC = (isFetching: boolean) => {
+export const toggleIsFetching = (isFetching: boolean) => {
     return {
         type: 'TOGGLE-IS-FETCHING',
         isFetching
