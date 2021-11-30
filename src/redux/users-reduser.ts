@@ -13,7 +13,8 @@ const InitialState: InitialStateTipe = {
     ],
     pageSize: 10,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 
 export const usersReduser = (state: usersPageType = InitialState, action: ActionType) => {
@@ -45,19 +46,25 @@ export const usersReduser = (state: usersPageType = InitialState, action: Action
         case 'SET-USERS': {
             return {
                 ...state,
-                users:  action.users
+                users: action.users
             }
         }
         case 'SET-CURRENT-PAGE': {
             return {
                 ...state,
-                currentPage:action.currentPage
+                currentPage: action.currentPage
             }
         }
         case 'SET-TOTAL-USERS-COUNT': {
             return {
                 ...state,
-                totalUsersCount:action.totalUsersCount
+                totalUsersCount: action.totalUsersCount
+            }
+        }
+        case 'TOGGLE-IS-FETCHING': {
+            return {
+                ...state,
+                isFetching: action.isFetching
             }
         }
 
@@ -99,5 +106,12 @@ export const SetTotalUsersCountAC = (totalUsersCount: number) => {
     return {
         type: 'SET-TOTAL-USERS-COUNT',
         totalUsersCount
+    } as const
+}
+
+export const ToggleIsFetchingAC = (isFetching: boolean) => {
+    return {
+        type: 'TOGGLE-IS-FETCHING',
+        isFetching
     } as const
 }

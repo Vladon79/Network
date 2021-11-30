@@ -1,5 +1,5 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
-import { AddUsersAC, RemoveUsersAC, SetCurrentPageAC, SetTotalUsersCountAC, SetUsersAC } from "../redux/users-reduser";
+import { AddUsersAC, RemoveUsersAC, SetCurrentPageAC, SetTotalUsersCountAC, SetUsersAC, ToggleIsFetchingAC } from "../redux/users-reduser";
 
 import { AddPostAC, NewPostChangeAC } from "../redux/profile-reduser";
 
@@ -8,6 +8,7 @@ export type usersPageType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 export type UsersType = {
     id: number
@@ -73,7 +74,10 @@ export type ActionType = AddPostActionType |
     RemoveFriendsActionType |
     SetCurrentPageActionType |
     SetTotalUsersCountActionType |
-    SetFriendsActionType;
+    SetFriendsActionType |
+    ToggleIsFetchingActionType;
+
+export type ToggleIsFetchingActionType = ReturnType<typeof ToggleIsFetchingAC>;
 
 export type SetTotalUsersCountActionType = ReturnType<typeof SetTotalUsersCountAC>;
 

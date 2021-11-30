@@ -20,7 +20,6 @@ const Users = (props: UsersPageTypeProps) => {
         pages.push(i)
     }
     return (
-
         <div className={s.div}>
             <div>
                 {pages.map(p => {
