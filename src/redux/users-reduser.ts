@@ -14,7 +14,7 @@ const InitialState: InitialStateTipe = {
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: true
 }
 
 export const usersReduser = (state: usersPageType = InitialState, action: ActionType) => {

@@ -28,7 +28,7 @@ const App = (props: AppType) => {
 
         <div className='app-wrapper-content'>
 
-          <Route path='/profile' render={() =>
+          <Route path='/profile/:userID?' render={() =>
             <ProfileContainer
             />}
           />

@@ -5,26 +5,43 @@ import Profile, { ProfileType } from './Profile';
 import { AddPostAC, NewPostChangeAC, setUsersProfile } from '../../redux/profile-reduser';
 import { postType } from "../../types/types";
 import axios from "axios";
+import { RouteComponentProps, withRouter } from "react-router";
 
-type ProfileContainerType = {
+type PathParamsType = {
+  userID: string
+}
+
+type MapStateToPropsType = {
   profile: any
-  post: Array<postType>
+  post: postType[]
   NewPostMessage: string
-  newPostChange: (text: string) => void
+}
+
+type MapDispachToPropsType = {
   addPost: (text: string) => void
+  newPostChange: (text: string) => void
   setUsersProfile: (profile: ProfileType) => void
 }
 
-class ProfileContainer extends React.Component<ProfileContainerType> {
+type ProfileContainerType = MapStateToPropsType & MapDispachToPropsType
+type PropsType = RouteComponentProps<PathParamsType> & ProfileContainerType
+
+class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+    debugger
+    let userID = this.props.match.params.userID
+    if(!userID){
+      userID='2'
+    }
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userID)
       .then(response => {
-        debugger
+
         this.props.setUsersProfile(response.data)
         // this.props.setTotalUsersCount(100)
 
       });
   }
+
   render() {
     return (
       <Profile {...this.props} profile={this.props.profile} />
@@ -32,7 +49,7 @@ class ProfileContainer extends React.Component<ProfileContainerType> {
   }
 }
 
-const mapStateToProps = (state: AppStoreType) => {
+const mapStateToProps = (state: AppStoreType): MapStateToPropsType => {
   return {
     profile: state.postPage.profile,
     post: state.postPage.postData,
@@ -40,7 +57,7 @@ const mapStateToProps = (state: AppStoreType) => {
   }
 }
 
-const mapDispachToProps = (dispatch: any) => {
+const mapDispachToProps = (dispatch: any): MapDispachToPropsType => {
   return {
     addPost: (text: string) => {
       dispatch(AddPostAC(text))
@@ -54,5 +71,6 @@ const mapDispachToProps = (dispatch: any) => {
   }
 }
 
+const WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
-export default connect(mapStateToProps, mapDispachToProps)(ProfileContainer);
+export default connect(mapStateToProps, mapDispachToProps)(WithUrlDataContainerComponent);
