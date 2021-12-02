@@ -28,7 +28,7 @@ class UsersContainer extends React.Component<UsersPageType>{
             .then(response => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(100)
+                this.props.setTotalUsersCount(200)
 
             });
     }

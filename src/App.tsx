@@ -4,6 +4,7 @@ import { Store } from 'redux';
 import './App.css';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import Header from './Components/Header/Header';
+import HeaderContainer from './Components/Header/HeaderContainer';
 import Music from './Components/Music/Music';
 import Navbar from './Components/Navbar/Navbar';
 import News from './Components/News/News';
@@ -22,13 +23,13 @@ const App = (props: AppType) => {
 
     <BrowserRouter>
       <div className='app-wrapper'>
-        <Header />
+        <HeaderContainer />
         <Navbar />
         
 
         <div className='app-wrapper-content'>
 
-          <Route path='/profile' render={() =>
+          <Route path='/profile/:userID?' render={() =>
             <ProfileContainer
             />}
           />
