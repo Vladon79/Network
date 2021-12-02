@@ -17,7 +17,7 @@ const InitialState: InitialStateTipe = {
     isFetching: true
 }
 
-export const usersReduser = (state: usersPageType = InitialState, action: ActionType) => {
+export const usersReduser = (state: usersPageType = InitialState, action: ActionType):usersPageType => {
 
     switch (action.type) {
         case 'ADD-USERS': {
