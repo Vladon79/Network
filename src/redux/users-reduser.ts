@@ -20,24 +20,24 @@ const InitialState: InitialStateTipe = {
 export const usersReduser = (state: usersPageType = InitialState, action: ActionType):usersPageType => {
 
     switch (action.type) {
-        case 'ADD-USERS': {
+        case 'FOLLOW-USERS': {
             return {
                 ...state,
                 users: state.users.map(f => {
                     if (f.id === action.usersID) {
-                        return { ...f, friends: true }
+                        return { ...f, followed: true }
                     }
                     return f
                 })
             }
 
         }
-        case 'REMOVE-USERS': {
+        case 'UNFOLLOW-USERS': {
             return {
                 ...state,
                 users: state.users.map(f => {
                     if (f.id === action.usersID) {
-                        return { ...f, friends: false }
+                        return { ...f, followed: false }
                     }
                     return f
                 })
@@ -74,16 +74,16 @@ export const usersReduser = (state: usersPageType = InitialState, action: Action
     }
 }
 
-export const addUsers = (usersID: number) => {
+export const followUsers = (usersID: number) => {
     return {
-        type: 'ADD-USERS',
+        type: 'FOLLOW-USERS',
         usersID
 
     } as const
 }
-export const removeUsers = (usersID: number) => {
+export const unfollowUsers = (usersID: number) => {
     return {
-        type: 'REMOVE-USERS',
+        type: 'UNFOLLOW-USERS',
         usersID
     } as const
 }
