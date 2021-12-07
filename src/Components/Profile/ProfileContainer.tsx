@@ -4,8 +4,8 @@ import { AppStoreType } from '../../redux/redux-store';
 import Profile, { ProfileType } from './Profile';
 import { AddPostAC, NewPostChangeAC, setUsersProfile } from '../../redux/profile-reduser';
 import { postType } from "../../types/types";
-import axios from "axios";
 import { RouteComponentProps, withRouter } from "react-router";
+import { usersAPI } from "../../api/api";
 
 type PathParamsType = {
   userID: string
@@ -33,12 +33,8 @@ class ProfileContainer extends React.Component<PropsType> {
     if(!userID){
       userID='2'
     }
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userID)
-      .then(response => {
-
-        this.props.setUsersProfile(response.data)
-        // this.props.setTotalUsersCount(100)
-
+    usersAPI.onUserProfile(userID).then(data => {
+        this.props.setUsersProfile(data)
       });
   }
 
