@@ -1,5 +1,5 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
-import { followUsers, unfollowUsers, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching } from "../redux/users-reduser";
+import { followUsers, unfollowUsers, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, toggleIsFollowingProgess } from "../redux/users-reduser";
 
 import { AddPostAC, NewPostChangeAC, setUsersProfile } from "../redux/profile-reduser";
 import { setAuthUserData } from "../redux/auth-reduser";
@@ -10,7 +10,8 @@ export type usersPageType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
-    
+    followingInProgress: Array<number>
+
 }
 export type UsersType = {
     id: number
@@ -80,7 +81,13 @@ export type ActionType = AddPostActionType |
     SetTotalUsersCountActionType |
     SetFriendsActionType |
     ToggleIsFetchingActionType |
+    toggleIsFollowingProgessActionType |
     setUserDataActionType;
+
+
+
+
+export type toggleIsFollowingProgessActionType = ReturnType<typeof toggleIsFollowingProgess>
 
 export type setUserDataActionType = ReturnType<typeof setAuthUserData>
 

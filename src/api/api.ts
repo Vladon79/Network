@@ -31,10 +31,3 @@ export const usersAPI = {
         ).then(response => response.data)
     }
 }
-
-// export const getUsers = (currentPage:number = 1, pageSize:number = 10) => {
-//     return instance.get(baseURL +`users?page=${currentPage}&count=${pageSize}`, 
-//     {
-//         withCredentials: true
-//     }).then(response => response.data)
-// }
