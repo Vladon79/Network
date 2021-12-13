@@ -5,19 +5,15 @@ import { ActionType, UsersType } from "../types/types";
 type InitialStateTipe = usersPageType
 
 const InitialState: InitialStateTipe = {
-    users: [
-        // { id: 1, friends: false, status: 'ONE', location: { country: 'Belarus', city: 'Brest' }, name: 'Pavel', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
-        // { id: 2, friends: true, status: 'TO', location: { country: 'Belarus', city: 'Brest' }, name: 'Artyr', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
-        // { id: 3, friends: true, status: 'END', location: { country: 'Belarus', city: 'Brest' }, name: 'Dima', ava: 'https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80' },
-
-    ],
+    users: [],
     pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: true
+    isFetching: true,
+    followingInProgress: []
 }
 
-export const usersReduser = (state: usersPageType = InitialState, action: ActionType):usersPageType => {
+export const usersReduser = (state: usersPageType = InitialState, action: ActionType): usersPageType => {
 
     switch (action.type) {
         case 'FOLLOW-USERS': {
@@ -67,6 +63,14 @@ export const usersReduser = (state: usersPageType = InitialState, action: Action
                 isFetching: action.isFetching
             }
         }
+        case 'TOGGLE-IS-FOLLOWING-PROGRESS': {
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.useiID]
+                    : state.followingInProgress.filter(id => id !== action.useiID)
+            }
+        }
 
         default:
             return state;
@@ -113,5 +117,12 @@ export const toggleIsFetching = (isFetching: boolean) => {
     return {
         type: 'TOGGLE-IS-FETCHING',
         isFetching
+    } as const
+}
+
+export const toggleIsFollowingProgess = (isFetching: boolean, useiID: number) => {
+    return {
+        type: 'TOGGLE-IS-FOLLOWING-PROGRESS',
+        isFetching, useiID
     } as const
 }
