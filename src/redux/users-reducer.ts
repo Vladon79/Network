@@ -1,10 +1,39 @@
-import { usersPageType } from './../types/types';
-import { ActionType, UsersType } from "../types/types";
+export type ActionType =
+    toggleIsFollowingProgessActionType |
+    ToggleIsFetchingActionType |
+    SetTotalUsersCountActionType |
+    SetCurrentPageActionType |
+    SetFriendsActionType |
+    UnFollowUserActionType |
+    FollowUserActionType
+export type toggleIsFollowingProgessActionType = ReturnType<typeof toggleIsFollowingProgess>
+export type ToggleIsFetchingActionType = ReturnType<typeof toggleIsFetching>;
+export type SetTotalUsersCountActionType = ReturnType<typeof setTotalUsersCount>;
+export type SetCurrentPageActionType = ReturnType<typeof setCurrentPage>;
+export type SetFriendsActionType = ReturnType<typeof setUsers>;
+export type UnFollowUserActionType = ReturnType<typeof unfollowUser>;
+export type FollowUserActionType = ReturnType<typeof followUser>;
 
-
-type InitialStateTipe = usersPageType
-
-const InitialState: InitialStateTipe = {
+export type usersPageType = {
+    users: Array<UsersType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
+    isFetching: boolean
+    followingInProgress: Array<number>
+}
+export type UsersType = {
+    id: number
+    followed: boolean
+    status?: string
+    location?: {
+        city: string
+        country: string
+    }
+    name: string
+    ava: string
+}
+const InitialState: usersPageType = {
     users: [],
     pageSize: 10,
     totalUsersCount: 0,
@@ -13,10 +42,10 @@ const InitialState: InitialStateTipe = {
     followingInProgress: []
 }
 
-export const usersReduser = (state: usersPageType = InitialState, action: ActionType): usersPageType => {
+export const usersReducer = (state: usersPageType = InitialState, action: ActionType): usersPageType => {
 
     switch (action.type) {
-        case 'FOLLOW-USERS': {
+        case 'FOLLOW-USER': {
             return {
                 ...state,
                 users: state.users.map(f => {
@@ -26,9 +55,8 @@ export const usersReduser = (state: usersPageType = InitialState, action: Action
                     return f
                 })
             }
-
         }
-        case 'UNFOLLOW-USERS': {
+        case 'UNFOLLOW-USER': {
             return {
                 ...state,
                 users: state.users.map(f => {
@@ -42,7 +70,7 @@ export const usersReduser = (state: usersPageType = InitialState, action: Action
         case 'SET-USERS': {
             return {
                 ...state,
-                users: action.users
+                users: action.user
             }
         }
         case 'SET-CURRENT-PAGE': {
@@ -67,35 +95,33 @@ export const usersReduser = (state: usersPageType = InitialState, action: Action
             return {
                 ...state,
                 followingInProgress: action.isFetching
-                    ? [...state.followingInProgress, action.useiID]
-                    : state.followingInProgress.filter(id => id !== action.useiID)
+                    ? [...state.followingInProgress, action.userID]
+                    : state.followingInProgress.filter(id => id !== action.userID)
             }
         }
-
         default:
             return state;
-
     }
 }
 
-export const followUsers = (usersID: number) => {
+export const followUser = (usersID: number) => {
     return {
-        type: 'FOLLOW-USERS',
+        type: 'FOLLOW-USER',
         usersID
 
     } as const
 }
-export const unfollowUsers = (usersID: number) => {
+export const unfollowUser = (usersID: number) => {
     return {
-        type: 'UNFOLLOW-USERS',
+        type: 'UNFOLLOW-USER',
         usersID
     } as const
 }
 
-export const setUsers = (users: Array<UsersType>) => {
+export const setUsers = (user: Array<UsersType>) => {
     return {
         type: 'SET-USERS',
-        users
+        user
     } as const
 }
 
@@ -120,9 +146,9 @@ export const toggleIsFetching = (isFetching: boolean) => {
     } as const
 }
 
-export const toggleIsFollowingProgess = (isFetching: boolean, useiID: number) => {
+export const toggleIsFollowingProgess = (isFetching: boolean, userID: number) => {
     return {
         type: 'TOGGLE-IS-FOLLOWING-PROGRESS',
-        isFetching, useiID
+        isFetching, userID
     } as const
 }

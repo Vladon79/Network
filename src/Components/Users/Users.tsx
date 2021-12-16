@@ -1,9 +1,10 @@
 import React from "react";
-import { UsersType } from "../../types/types";
+
 import s from './Users.module.css';
 import userPhoto from './../../assents/image/user.png'
 import { NavLink } from "react-router-dom";
 import { usersAPI } from "../../api/api";
+import { UsersType } from "../../redux/users-reducer";
 
 type UsersPageTypeProps = {
     totalUsersCount: number
@@ -11,8 +12,8 @@ type UsersPageTypeProps = {
     currentPage: number
     followingInProgress: Array<number>
     onPageChange: (p: number) => void
-    unfollowUsers: (id: number) => void
-    followUsers: (id: number) => void
+    unfollowUser: (id: number) => void
+    followUser: (id: number) => void
     toggleIsFollowingProgess: (isFetching: boolean, userID: number) => void
     users: Array<UsersType>
 }
@@ -28,7 +29,7 @@ const Users = (props: UsersPageTypeProps) => {
         props.toggleIsFollowingProgess(true, id)
         usersAPI.unFollowToUser(id).then(data => {
             if (data.resultCode === 0) {
-                props.unfollowUsers(id)
+                props.unfollowUser(id)
             }
             props.toggleIsFollowingProgess(false, id)
         });
@@ -38,7 +39,7 @@ const Users = (props: UsersPageTypeProps) => {
         props.toggleIsFollowingProgess(true, id)
         usersAPI.followToUser(id).then(data => {
             if (data.resultCode === 0) {
-                props.followUsers(id)
+                props.followUser(id)
             }
             props.toggleIsFollowingProgess(false, id)
         });
