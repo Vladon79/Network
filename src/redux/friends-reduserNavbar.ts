@@ -1,4 +1,5 @@
-import { ActionType, usersPageType } from "../types/types";
+import { ActionType } from "../types/types";
+import { usersPageType } from "./users-reducer";
 
 
 type InitialStateTipe = usersPageType

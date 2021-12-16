@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { AppStoreType } from '../../redux/redux-store';
-import { UsersType } from '../../types/types';
+import { UsersType } from '../../redux/users-reducer';
+
 
 import s from './Navbar.module.css';
 
