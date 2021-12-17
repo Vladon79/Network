@@ -1,7 +1,6 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
 import { followUser, unfollowUser, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, toggleIsFollowingProgess, usersPageType } from "../redux/users-reducer";
-
-import { AddPostAC, NewPostChangeAC, setUsersProfile } from "../redux/profile-reduser";
+import { addPost, newPostChange, postPageType, setUsersProfile } from "../redux/profile-reducer";
 import { setAuthUserData } from "../redux/auth-reduser";
 
 
@@ -27,11 +26,7 @@ export type messagesPageType = {
     newMessage: string
 
 }
-export type postPageType = {
-    postData: Array<postType>
-    NewPostMessage: string
-    profile: any
-}
+
 
 export type stateType = {
     messagePage: messagesPageType
@@ -86,9 +81,9 @@ export type RemoveFriendsActionType = ReturnType<typeof unfollowUser>;
 
 export type AddFriendsActionType = ReturnType<typeof followUser>;
 
-export type AddPostActionType = ReturnType<typeof AddPostAC>;
+export type AddPostActionType = ReturnType<typeof addPost>;
 
-export type NewPostChangeActionType = ReturnType<typeof NewPostChangeAC>;
+export type NewPostChangeActionType = ReturnType<typeof newPostChange>;
 
 export type SendMessageType = ReturnType<typeof SendMessageAC>;
 

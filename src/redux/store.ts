@@ -3,7 +3,7 @@ import React from "react";
 // import { dialogsReduser } from "./dialogs-reduser";
 
 
-// import { profileReduser } from "./profile-reduser";
+// import { profileReducer } from "./profile-reduser";
 
 
 // const store: storeType = {
@@ -89,7 +89,7 @@ import React from "react";
 //   },
 //   dispatch(action) {
 
-//     this._state.postPage = profileReduser(this._state.postPage, action)
+//     this._state.postPage = profileReducer(this._state.postPage, action)
 //     this._state.messagePage = dialogsReduser(this._state.messagePage, action)
 //     // this._state.friendsPage = friendsReduserNav(this._state.friendsPage, action)
 

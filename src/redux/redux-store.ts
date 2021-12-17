@@ -1,12 +1,12 @@
 import { dialogsReduser } from './dialogs-reduser';
-import { profileReduser } from './profile-reduser';
+import { profileReducer } from './profile-reducer';
 import { combineReducers, createStore } from 'redux';
 import {  usersReducer } from './users-reducer';
 import { authReduser } from './auth-reduser';
 
 
 const redusers = combineReducers({
-    postPage: profileReduser,
+    postPage: profileReducer,
     messagePage: dialogsReduser,
     usersPage: usersReducer,
     auth: authReduser
