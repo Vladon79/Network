@@ -1,9 +1,13 @@
-import { ActionType, postPageType, postType } from "../types/types"
+import { ActionType, postType } from "../types/types"
 
 
-type InitialStateType = postPageType
+export type postPageType = {
+  postData: Array<postType>
+  NewPostMessage: string
+  profile: any
+}
 
-const InitialState: InitialStateType = {
+const InitialState: postPageType = {
   NewPostMessage: '',
   postData: [
     { id: 1, message: 'Today I go to the cinema', numberLike: 12 },
@@ -13,7 +17,7 @@ const InitialState: InitialStateType = {
   profile:null
 }
 
-export const profileReduser = (state: postPageType = InitialState, action: ActionType) => {
+export const profileReducer = (state: postPageType = InitialState, action: ActionType) => {
   switch (action.type) {
     case 'ADD-POST': {
       const newPostAddData: postType = {
@@ -39,14 +43,14 @@ export const profileReduser = (state: postPageType = InitialState, action: Actio
   }
 }
 
-export const AddPostAC = (newPostAdd: string) => {
+export const addPost = (newPostAdd: string) => {
   return {
     type: 'ADD-POST',
     newPostAdd: newPostAdd
   } as const
 }
 
-export const NewPostChangeAC = (NewPostText: string) => {
+export const newPostChange = (NewPostText: string) => {
   return {
     type: 'NEW-POST-CHANGE',
     NewPostText: NewPostText

@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
 import Profile, { ProfileType } from './Profile';
-import { AddPostAC, NewPostChangeAC, setUsersProfile } from '../../redux/profile-reduser';
+import { addPost, newPostChange, setUsersProfile } from '../../redux/profile-reducer';
 import { postType } from "../../types/types";
 import { RouteComponentProps, withRouter } from "react-router";
 import { usersAPI } from "../../api/api";
@@ -56,10 +56,10 @@ const mapStateToProps = (state: AppStoreType): MapStateToPropsType => {
 const mapDispachToProps = (dispatch: any): MapDispachToPropsType => {
   return {
     addPost: (text: string) => {
-      dispatch(AddPostAC(text))
+      dispatch(addPost(text))
     },
     newPostChange: (text: string) => {
-      dispatch(NewPostChangeAC(text))
+      dispatch(newPostChange(text))
     },
     setUsersProfile: (profile: ProfileType) => {
       dispatch(setUsersProfile(profile))
