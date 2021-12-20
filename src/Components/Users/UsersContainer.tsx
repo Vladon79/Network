@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
-import { followUser, unfollowUser, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, toggleIsFollowingProgess, UsersType } from '../../redux/users-reducer';
+import { followSuccess, unFollowSuccess, setCurrentPage, toggleIsFollowingProgess, UsersType, getUsers, follow, unFollow } from '../../redux/users-reducer';
 import React from "react";
 import Users from "./Users";
 import Preloader from '../common/Preloader/Preloader';
-import { usersAPI } from '../../api/api';
+
+
 
 
 type UsersPageType = {
@@ -14,30 +15,32 @@ type UsersPageType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: Array<number>
-    followUser: (friendsID: number) => void
-    unfollowUser: (friendsID: number) => void
-    setUsers: (friends: Array<UsersType>) => void
+    followSuccess: (friendsID: number) => void
+    unFollowSuccess: (friendsID: number) => void
     setCurrentPage: (currentPage: number) => void
-    setTotalUsersCount: (totalUsersCount: number) => void
-    toggleIsFetching: (isFetching: boolean) => void
     toggleIsFollowingProgess: (isFetching: boolean, userID: number) => void
+    getUsers: (currentPage: number, pageSize: number) => void
+    follow:(id:number)=>void
+    unFollow:(id:number)=>void
 }
 class UsersContainer extends React.Component<UsersPageType>{
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-            this.props.setTotalUsersCount(200)
-        });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        // this.props.toggleIsFetching(true)
+        // usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        //     this.props.toggleIsFetching(false)
+        //     this.props.setUsers(data.items)
+        //     this.props.setTotalUsersCount(200)
+        // });
     }
     onPageChange = (pageNumber: number) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.toggleIsFetching(false)
-            this.props.setUsers(data.items)
-        });
+        this.props.getUsers(pageNumber, this.props.pageSize)
+        // this.props.setCurrentPage(pageNumber);
+        // this.props.toggleIsFetching(true)
+        // usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+        //     this.props.toggleIsFetching(false)
+        //     this.props.setUsers(data.items)
+        // });
     }
     render() {
         return <>
@@ -47,18 +50,19 @@ class UsersContainer extends React.Component<UsersPageType>{
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
                 onPageChange={this.onPageChange}
-                unfollowUser={this.props.unfollowUser}
-                followUser={this.props.followUser}
+                unFollowSuccess={this.props.unFollowSuccess}
+                followSuccess={this.props.followSuccess}
                 users={this.props.users}
                 toggleIsFollowingProgess={this.props.toggleIsFollowingProgess}
                 followingInProgress={this.props.followingInProgress}
+                follow={this.props.follow}
+                unFollow={this.props.unFollow}
             />
         </>
     }
 }
 
 const mapStateToProps = (state: AppStoreType) => {
-
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
@@ -71,5 +75,7 @@ const mapStateToProps = (state: AppStoreType) => {
 
 
 export default connect(mapStateToProps,
-    { followUser, unfollowUser, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching, toggleIsFollowingProgess })
+    {
+        followSuccess, unFollowSuccess, setCurrentPage, toggleIsFollowingProgess, getUsers, follow, unFollow
+    })
     (UsersContainer);
