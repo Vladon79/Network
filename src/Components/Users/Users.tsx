@@ -12,9 +12,11 @@ type UsersPageTypeProps = {
     currentPage: number
     followingInProgress: Array<number>
     onPageChange: (p: number) => void
-    unfollowUser: (id: number) => void
-    followUser: (id: number) => void
+    unFollowSuccess: (id: number) => void
+    followSuccess: (id: number) => void
     toggleIsFollowingProgess: (isFetching: boolean, userID: number) => void
+    follow:(id:number)=>void
+    unFollow:(id:number)=>void
     users: Array<UsersType>
 }
 
@@ -25,25 +27,25 @@ const Users = (props: UsersPageTypeProps) => {
         pages.push(i)
     }
 
-    const unfollowOnClickHandler = (id: number) => {
-        props.toggleIsFollowingProgess(true, id)
-        usersAPI.unFollowToUser(id).then(data => {
-            if (data.resultCode === 0) {
-                props.unfollowUser(id)
-            }
-            props.toggleIsFollowingProgess(false, id)
-        });
-    }
+    // const unfollowOnClickHandler = (id: number) => {
+    //     props.toggleIsFollowingProgess(true, id)
+    //     usersAPI.unFollowToUser(id).then(data => {
+    //         if (data.resultCode === 0) {
+    //             props.unFollowSuccess(id)
+    //         }
+    //         props.toggleIsFollowingProgess(false, id)
+    //     });
+    // }
 
-    const followOnClickHandler = (id: number) => {
-        props.toggleIsFollowingProgess(true, id)
-        usersAPI.followToUser(id).then(data => {
-            if (data.resultCode === 0) {
-                props.followUser(id)
-            }
-            props.toggleIsFollowingProgess(false, id)
-        });
-    }
+    // const followOnClickHandler = (id: number) => {
+    //     props.toggleIsFollowingProgess(true, id)
+    //     usersAPI.followToUser(id).then(data => {
+    //         if (data.resultCode === 0) {
+    //             props.followSuccess(id)
+    //         }
+    //         props.toggleIsFollowingProgess(false, id)
+    //     });
+    // }
 
     return (
         <div className={s.div}>
@@ -69,9 +71,9 @@ const Users = (props: UsersPageTypeProps) => {
                         <div className={s.buttonDiv}>
                             {
                                 u.followed ?
-                                    <button onClick={() => unfollowOnClickHandler(u.id)} disabled={props.followingInProgress.some(id => id === u.id)} className={s.button}>Unfollow</button>
+                                    <button onClick={() => props.unFollow(u.id)} disabled={props.followingInProgress.some(id => id === u.id)} className={s.button}>Unfollow</button>
                                     :
-                                    <button onClick={() => followOnClickHandler(u.id)} disabled={props.followingInProgress.some(id => id === u.id)} className={s.button}>Follow</button>}
+                                    <button onClick={() => props.follow(u.id)} disabled={props.followingInProgress.some(id => id === u.id)} className={s.button}>Follow</button>}
                         </div>
                     </div>
 
