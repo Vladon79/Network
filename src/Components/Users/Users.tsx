@@ -14,7 +14,6 @@ type UsersPageTypeProps = {
     onPageChange: (p: number) => void
     unFollowSuccess: (id: number) => void
     followSuccess: (id: number) => void
-    toggleIsFollowingProgess: (isFetching: boolean, userID: number) => void
     follow:(id:number)=>void
     unFollow:(id:number)=>void
     users: Array<UsersType>
@@ -26,26 +25,6 @@ const Users = (props: UsersPageTypeProps) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
-    // const unfollowOnClickHandler = (id: number) => {
-    //     props.toggleIsFollowingProgess(true, id)
-    //     usersAPI.unFollowToUser(id).then(data => {
-    //         if (data.resultCode === 0) {
-    //             props.unFollowSuccess(id)
-    //         }
-    //         props.toggleIsFollowingProgess(false, id)
-    //     });
-    // }
-
-    // const followOnClickHandler = (id: number) => {
-    //     props.toggleIsFollowingProgess(true, id)
-    //     usersAPI.followToUser(id).then(data => {
-    //         if (data.resultCode === 0) {
-    //             props.followSuccess(id)
-    //         }
-    //         props.toggleIsFollowingProgess(false, id)
-    //     });
-    // }
 
     return (
         <div className={s.div}>

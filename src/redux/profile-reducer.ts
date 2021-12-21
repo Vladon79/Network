@@ -1,4 +1,5 @@
-import { ActionType, postType } from "../types/types"
+import { usersAPI } from "../api/api";
+import { ActionType, DispatchType, postType } from "../types/types"
 
 
 export type postPageType = {
@@ -62,4 +63,12 @@ export const setUsersProfile = (profile: any) => {
     type: 'SET-USER-PROFILE',
     profile
   } as const
+}
+
+export const onUserProfile = (userID:string) => {
+  return (dispatch: DispatchType) => {
+    usersAPI.onUserProfile(userID).then(data => {
+      dispatch(setUsersProfile(data))
+    });
+  }
 }
