@@ -1,4 +1,5 @@
 import { usersAPI } from "../api/api";
+import { DispatchType } from "../types/types";
 
 export type ActionType =
     toggleIsFollowingProgessActionType |
@@ -156,7 +157,7 @@ export const toggleIsFollowingProgess = (isFetching: boolean, userID: number) =>
 }
 
 export const getUsers = (currentPage: number, pageSize: number) => {
-    return (dispatch: any) => {
+    return (dispatch: DispatchType) => {
         dispatch(toggleIsFetching(true))
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(toggleIsFetching(false))
@@ -167,7 +168,7 @@ export const getUsers = (currentPage: number, pageSize: number) => {
 }
 
 export const follow = (id: number) => {
-    return (dispatch: any) => {
+    return (dispatch: DispatchType) => {
         dispatch(toggleIsFollowingProgess(true, id))
         usersAPI.followToUser(id).then(data => {
             if (data.resultCode === 0) {
@@ -179,7 +180,7 @@ export const follow = (id: number) => {
 }
 
 export const unFollow = (id: number) => {
-    return (dispatch: any) => {
+    return (dispatch: DispatchType) => {
         dispatch(toggleIsFollowingProgess(true, id))
         usersAPI.unFollowToUser(id).then(data => {
             if (data.resultCode === 0) {

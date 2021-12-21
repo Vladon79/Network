@@ -1,5 +1,6 @@
 
-import { ActionType } from "../types/types";
+import { usersAPI } from "../api/api";
+import { ActionType, DispatchType } from "../types/types";
 
 export type authDataType = {
     id: number 
@@ -26,10 +27,7 @@ export const authReduser = (state: authDataType = InitialState, action: ActionTy
                 ...action.data,
                 isAuth:true
             }
-
         }
-
-
         default:
             return state;
 
@@ -42,4 +40,14 @@ export const setAuthUserData = (data: authDataType) => {
         data
 
     } as const
+}
+
+export const authMe = () => {
+    return (dispatch: DispatchType) => {
+        usersAPI.authMe().then(data => {
+            if (data.resultCode === 0) {
+              dispatch(setAuthUserData(data.data))
+            }
+          });
+    }
 }

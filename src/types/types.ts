@@ -2,6 +2,7 @@ import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
 import { followSuccess, unFollowSuccess, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, toggleIsFollowingProgess, usersPageType } from "../redux/users-reducer";
 import { addPost, newPostChange, postPageType, setUsersProfile } from "../redux/profile-reducer";
 import { setAuthUserData } from "../redux/auth-reduser";
+import { Dispatch } from "react";
 
 
 
@@ -45,6 +46,8 @@ export type storeType = {
     subscribe: (callback: (state: stateType) => void) => void
     dispatch: (action: ActionType) => void
 }
+
+export type DispatchType = Dispatch< ActionType >
 
 export type ActionType = AddPostActionType |
     NewPostChangeActionType |

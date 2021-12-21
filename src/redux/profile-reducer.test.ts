@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+import { DispatchType } from "../types/types";
 import { addPost, newPostChange, postPageType, profileReducer, setUsersProfile } from "./profile-reducer";
 
 
@@ -54,3 +56,5 @@ test('set user profile', () => {
 
   expect(endState.profile).toBe('new user');
 })
+
+
