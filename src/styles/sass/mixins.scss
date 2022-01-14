@@ -1,0 +1,9 @@
+@import './variables.scss';
+
+@mixin text ($fontSize, $fontWeight, $lineHeight){
+    font-family: "Roboto", "Segoe Ui";
+    color: $textColor;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    line-height: $lineHeight;
+}

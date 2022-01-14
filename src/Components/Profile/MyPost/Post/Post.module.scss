@@ -1,0 +1,31 @@
+@import '../../../../styles/sass/variables.scss';
+@import '../../../../styles/sass/mixins.scss';
+
+.post{
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+    background-color: $headerColor;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    & img{
+        width: 70px;
+        height: 70px;
+        border-radius: 40px;
+    }
+    .massage{
+        @include text( 15px, 500, 20px);
+        padding:5px ;
+        text-align: left;
+        display: grid;
+        grid-template-rows:1fr 25px;
+        .like{
+            padding-right: 50px;
+            text-align: right;
+            color: red;
+        }
+    }
+}
+  
+
+  
