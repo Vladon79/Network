@@ -1,5 +1,5 @@
 
-import { usersAPI } from "../api/api";
+import { authAPI, usersAPI } from "../api/api";
 import { ActionType, DispatchType } from "../types/types";
 
 export type authDataType = {
@@ -44,7 +44,7 @@ export const setAuthUserData = (data: authDataType) => {
 
 export const authMe = () => {
     return (dispatch: DispatchType) => {
-        usersAPI.authMe().then(data => {
+        authAPI.me().then(data => {
             if (data.resultCode === 0) {
               dispatch(setAuthUserData(data.data))
             }

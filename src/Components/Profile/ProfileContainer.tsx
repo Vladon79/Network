@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
 import Profile, { ProfileType } from './Profile';
-import { addPost, newPostChange, setUsersProfile, onUserProfile } from '../../redux/profile-reducer';
+import { addPost, newPostChange, setUsersProfile, getUserProfile } from '../../redux/profile-reducer';
 import { postType } from "../../types/types";
 import { RouteComponentProps, withRouter } from "react-router";
 
@@ -20,7 +20,7 @@ type MapDispachToPropsType = {
   addPost: (text: string) => void
   newPostChange: (text: string) => void
   setUsersProfile: (profile: ProfileType) => void
-  onUserProfile: (userId: string) => void
+  getUserProfile: (userId: string) => void
 }
 
 type ProfileContainerType = MapStateToPropsType & MapDispachToPropsType
@@ -33,7 +33,7 @@ class ProfileContainer extends React.Component<PropsType> {
     if (!userID) {
       userID = '2'
     }
-    this.props.onUserProfile(userID)
+    this.props.getUserProfile(userID)
   }
 
   render() {
@@ -53,4 +53,4 @@ const mapStateToProps = (state: AppStoreType): MapStateToPropsType => {
 
 const WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
-export default connect(mapStateToProps, { addPost, newPostChange, setUsersProfile,  onUserProfile})(WithUrlDataContainerComponent);
+export default connect(mapStateToProps, { addPost, newPostChange, setUsersProfile,  getUserProfile})(WithUrlDataContainerComponent);
