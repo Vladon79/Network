@@ -65,9 +65,9 @@ export const setUsersProfile = (profile: any) => {
   } as const
 }
 
-export const onUserProfile = (userID:string) => {
+export const getUserProfile = (userID:string) => {
   return (dispatch: DispatchType) => {
-    usersAPI.onUserProfile(userID).then(data => {
+    usersAPI.getProfile(userID).then(data => {
       dispatch(setUsersProfile(data))
     });
   }

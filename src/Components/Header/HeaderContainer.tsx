@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { authAPI } from '../../api/api';
 import { authDataType, setAuthUserData, authMe } from '../../redux/auth-reduser';
 import { AppStoreType } from '../../redux/redux-store';
 import Header from './Header';
