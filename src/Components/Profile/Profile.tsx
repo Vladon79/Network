@@ -1,7 +1,7 @@
 import React from 'react';
 import { postType } from '../../types/types';
 import MyPost from './MyPost/MyPost';
-import s from './Profile.module.css';
+import s from './Profile.module.scss';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 export type ProfileType = {
@@ -26,16 +26,14 @@ type PostType = {
 const Profile = (props: PostType) => {
   return (
     <div className={s.profile}>
-      <div className={s.profileInfo}>
-        <ProfileInfo profile={props.profile} />
-      </div>
-      <div className={s.myPost}>
-        <MyPost
-          post={props.post}
-          newPostChange={props.newPostChange}
-          addPost={props.addPost}
-          NewPostMessage={props.NewPostMessage}
-        />
+      <div className={s.profileContainer}>
+          <ProfileInfo profile={props.profile} />
+          <MyPost
+            post={props.post}
+            newPostChange={props.newPostChange}
+            addPost={props.addPost}
+            NewPostMessage={props.NewPostMessage}
+          />
       </div>
     </div>
   )
