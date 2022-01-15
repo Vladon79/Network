@@ -1,4 +1,5 @@
 import React from 'react';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 import s from './Music.module.css';
 
 
@@ -11,4 +12,4 @@ const Music = () => {
   
     )
 }
-export default Music;
+export default withAuthRedirect(Music);

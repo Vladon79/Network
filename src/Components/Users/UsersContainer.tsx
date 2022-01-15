@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
-import { followSuccess, unFollowSuccess, setCurrentPage,  UsersType, getUsers, follow, unFollow } from '../../redux/users-reducer';
+import { followSuccess, unFollowSuccess, setCurrentPage, UsersType, getUsers, follow, unFollow } from '../../redux/users-reducer';
 import React from "react";
 import Users from "./Users";
 import Preloader from '../common/Preloader/Preloader';
-
-
-
+import { compose } from 'redux';
 
 type UsersPageType = {
     users: Array<UsersType>
@@ -19,8 +17,8 @@ type UsersPageType = {
     unFollowSuccess: (friendsID: number) => void
     setCurrentPage: (currentPage: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
-    follow:(id:number)=>void
-    unFollow:(id:number)=>void
+    follow: (id: number) => void
+    unFollow: (id: number) => void
 }
 class UsersContainer extends React.Component<UsersPageType>{
     componentDidMount() {
@@ -52,7 +50,7 @@ class UsersContainer extends React.Component<UsersPageType>{
                 unFollowSuccess={this.props.unFollowSuccess}
                 followSuccess={this.props.followSuccess}
                 users={this.props.users}
-               
+
                 followingInProgress={this.props.followingInProgress}
                 follow={this.props.follow}
                 unFollow={this.props.unFollow}
@@ -71,10 +69,7 @@ const mapStateToProps = (state: AppStoreType) => {
         followingInProgress: state.usersPage.followingInProgress
     }
 }
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, { followSuccess, unFollowSuccess, setCurrentPage, getUsers, follow, unFollow }))
+    (UsersContainer)
 
-
-export default connect(mapStateToProps,
-    {
-        followSuccess, unFollowSuccess, setCurrentPage,  getUsers, follow, unFollow
-    })
-    (UsersContainer);
