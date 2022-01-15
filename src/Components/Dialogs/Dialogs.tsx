@@ -2,7 +2,8 @@ import React, { ChangeEvent } from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.css';
 import Messages from './Message/Message';
-import {  dialogsType, messagesType } from '../../types/types';
+import { dialogsType, messagesType } from '../../types/types';
+import { Redirect } from 'react-router-dom';
 
 type DialogsType = {
   newMessage: string
@@ -10,6 +11,7 @@ type DialogsType = {
   dialogs: Array<dialogsType>
   NewMessageChange: (text: string) => void
   SendMessage: (text: string) => void
+  isAuth: boolean
 }
 
 const Dialogs = (props: DialogsType) => {
@@ -22,7 +24,7 @@ const Dialogs = (props: DialogsType) => {
   const sendMessageOnClickHandler = () => {
     if (sendMessage.current) {
       props.SendMessage(sendMessage.current.value)
-     
+
       sendMessage.current.value = ''
     }
   }
@@ -30,11 +32,11 @@ const Dialogs = (props: DialogsType) => {
   const onChangeHandlerNewMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
     if (sendMessage.current) {
       props.NewMessageChange(sendMessage.current.value)
-      
+
     }
   }
-
   return (
+
     <div className={s.dialogs}>
       <div className={s.dialogsItem}>
 
@@ -43,7 +45,7 @@ const Dialogs = (props: DialogsType) => {
 
       <div className={s.messages}>
         <div>{messagesElement}</div>
-        
+
         <div className={s.addMessage}>
           <textarea ref={sendMessage} value={props.newMessage} onChange={onChangeHandlerNewMessage} className={s.textarea}></textarea>
 

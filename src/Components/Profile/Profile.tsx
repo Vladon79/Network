@@ -14,7 +14,6 @@ export type ProfileType = {
   userId: number
 }
 
-
 type PostType = {
   profile: ProfileType
   post: Array<postType>
@@ -24,6 +23,7 @@ type PostType = {
 }
 
 const Profile = (props: PostType) => {
+  
   return (
     <div className={s.profile}>
       <div className={s.profileContainer}>

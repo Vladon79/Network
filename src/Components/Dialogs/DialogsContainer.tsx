@@ -2,14 +2,17 @@ import { NewMessageChangeAC, SendMessageAC } from '../../redux/dialogs-reduser';
 import { connect } from 'react-redux';
 import { AppStoreType } from '../../redux/redux-store';
 import Dialogs from './Dialogs';
-import { Dispatch } from 'redux';
+import { compose, Dispatch } from 'redux';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
+import React from 'react';
 
 
 const mapStateToProps = (state: AppStoreType) => {
   return {
     newMessage: state.messagePage.newMessage,
     messages: state.messagePage.masseges,
-    dialogs: state.messagePage.dialogs
+    dialogs: state.messagePage.dialogs,
+    isAuth: state.auth.isAuth
   }
 }
 
@@ -24,5 +27,7 @@ const mapDispachToProps = (dispatch: Dispatch) => {
   }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispachToProps)(Dialogs)
-export default DialogsContainer;
+export default compose<React.ComponentType>(
+  withAuthRedirect,
+  connect(mapStateToProps, mapDispachToProps)
+)(Dialogs)
