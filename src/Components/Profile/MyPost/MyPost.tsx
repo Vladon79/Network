@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { postType } from '../../../types/types';
+import Button from '../../common/Button/Button';
 import s from './MyPost.module.scss';
 import Post from './Post/Post';
 
@@ -40,7 +41,7 @@ const MyPost = (props: MyPostType) => {
             value={props.NewPostMessage}
             onChange={onChangeHandlerNewPost}/>
           <div>
-            <button onClick={addPostOnClickHandler}>Add post</button>
+            <Button onClick={addPostOnClickHandler} title={'Add post'}/>
           </div>
         </div>
 

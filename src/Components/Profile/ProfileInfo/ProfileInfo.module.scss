@@ -28,6 +28,11 @@
         color: $textColor;
         font-family: Arial, Helvetica, sans-serif;
         padding: 20px;
+        .name{
+            @include text( 20px, 500, 1.2);
+            color:$primaryColor;
+            font-weight: bolder;
+        }
     }
 }
 

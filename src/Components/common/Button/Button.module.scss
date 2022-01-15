@@ -1,0 +1,10 @@
+@import '../../../styles/sass/variables.scss';
+@import '../../../styles/sass/mixins.scss';
+
+.button{
+    border: medium none;
+    @include text( 13px, 500, 1.5);
+    padding: 4px 20px;
+    border-radius: 4px;
+    background-color:$primaryColor;
+}
