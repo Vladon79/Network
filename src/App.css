@@ -59,12 +59,8 @@ ul li {
 
 .app-wrapper-content{
   grid-area: c;
-  background-color: #F7F8F9;
+  
 }
-textarea{
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #333333;
-  color: #F7F8F9;
-}
+
 
 

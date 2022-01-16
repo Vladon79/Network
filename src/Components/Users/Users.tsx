@@ -5,6 +5,7 @@ import userPhoto from './../../assents/image/user.png'
 import { NavLink } from "react-router-dom";
 import { usersAPI } from "../../api/api";
 import { UsersType } from "../../redux/users-reducer";
+import Button from "../common/Button/Button";
 
 type UsersPageTypeProps = {
     totalUsersCount: number
@@ -14,8 +15,8 @@ type UsersPageTypeProps = {
     onPageChange: (p: number) => void
     unFollowSuccess: (id: number) => void
     followSuccess: (id: number) => void
-    follow:(id:number)=>void
-    unFollow:(id:number)=>void
+    follow: (id: number) => void
+    unFollow: (id: number) => void
     users: Array<UsersType>
 }
 
@@ -50,9 +51,11 @@ const Users = (props: UsersPageTypeProps) => {
                         <div className={s.buttonDiv}>
                             {
                                 u.followed ?
-                                    <button onClick={() => props.unFollow(u.id)} disabled={props.followingInProgress.some(id => id === u.id)} className={s.button}>Unfollow</button>
+                                    <Button onClick={() => props.unFollow(u.id)} title={'Unfollow'} disabled={props.followingInProgress.some(id => id === u.id)} />
                                     :
-                                    <button onClick={() => props.follow(u.id)} disabled={props.followingInProgress.some(id => id === u.id)} className={s.button}>Follow</button>}
+
+                                    <Button onClick={() => props.follow(u.id)} title={'Follow'} disabled={props.followingInProgress.some(id => id === u.id)} />
+                            }
                         </div>
                     </div>
 
