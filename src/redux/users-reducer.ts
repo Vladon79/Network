@@ -18,14 +18,14 @@ export type UnFollowUserActionType = ReturnType<typeof unFollowSuccess>;
 export type FollowUserActionType = ReturnType<typeof followSuccess>;
 
 export type usersPageType = {
-    users: Array<UsersType>
+    users: Array<UserType>
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
     followingInProgress: Array<number>
 }
-export type UsersType = {
+export type UserType = {
     id: number
     followed: boolean
     status?: string
@@ -121,7 +121,7 @@ export const unFollowSuccess = (usersID: number) => {
     } as const
 }
 
-export const setUsers = (user: Array<UsersType>) => {
+export const setUsers = (user: Array<UserType>) => {
     return {
         type: 'SET-USERS',
         user

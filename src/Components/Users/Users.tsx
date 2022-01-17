@@ -1,11 +1,10 @@
 import React from "react";
-
-import s from './Users.module.css';
+import s from './Users.module.scss';
 import userPhoto from './../../assents/image/user.png'
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../api/api";
-import { UsersType } from "../../redux/users-reducer";
+import { UserType } from "../../redux/users-reducer";
 import Button from "../common/Button/Button";
+import User from "./User/User";
 
 type UsersPageTypeProps = {
     totalUsersCount: number
@@ -17,7 +16,7 @@ type UsersPageTypeProps = {
     followSuccess: (id: number) => void
     follow: (id: number) => void
     unFollow: (id: number) => void
-    users: Array<UsersType>
+    users: Array<UserType>
 }
 
 const Users = (props: UsersPageTypeProps) => {
@@ -28,47 +27,23 @@ const Users = (props: UsersPageTypeProps) => {
     }
 
     return (
-        <div className={s.div}>
-            <div>
+        <div className={s.users}>
+            <div className={s.pageNumber}>
                 {pages.map(p => {
-                    return (
-                        <span className={props.currentPage === p ? s.selectedPage : ''}
-                            onClick={() => props.onPageChange(p)}>{p}</span>
-                    )
 
+                    return (
+                        <span className={props.currentPage === p ? s.selectedPage : s.notselectpage}
+                            onClick={() => {
+                                console.log(p)
+                                props.onPageChange(p)}}>{p}</span>
+                    )
+                    
                 })}
 
             </div>
 
             {
-                props.users.map(u => <div key={u.id} className={s.friendsPage}>
-                    <div className={s.AvaButton}>
-                        <div className={s.avaDiv}>
-                            <NavLink to={'/profile/' + u.id}>
-                                <img src={u.ava ? u.ava : userPhoto} className={s.ava} />
-                            </NavLink>
-                        </div>
-                        <div className={s.buttonDiv}>
-                            {
-                                u.followed ?
-                                    <Button onClick={() => props.unFollow(u.id)} title={'Unfollow'} disabled={props.followingInProgress.some(id => id === u.id)} />
-                                    :
-
-                                    <Button onClick={() => props.follow(u.id)} title={'Follow'} disabled={props.followingInProgress.some(id => id === u.id)} />
-                            }
-                        </div>
-                    </div>
-
-                    <div className={s.NameStatus}>
-                        <div className={s.name}>{u.name}</div>
-                        <div>status:{u.status}</div>
-                    </div>
-                    <div>
-                        <div>country:{u.location?.country}</div>
-                        <div>city:{u.location?.city}</div>
-                    </div>
-
-                </div>)
+                props.users.map(u => <User user={u} follow={props.follow} unFollow={props.unFollow} followingInProgress={props.followingInProgress} />)
             }
         </div>
     )

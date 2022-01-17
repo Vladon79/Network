@@ -1,0 +1,65 @@
+@import '../../../styles/sass/variables.scss';
+@import '../../../styles/sass/mixins.scss';
+
+
+
+.userPage{
+    background-color: $blokColor;
+    display: grid;
+    grid-template-columns: 1fr 7fr;   
+    margin: 5px;
+    border-radius: 5px;
+    .avaButton{
+        display: grid;
+        justify-items: center;
+        padding: 5px;
+        .avaDiv{
+            .ava{
+                margin: 1px;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        
+        }
+        .buttonDiv{
+            .userButton{
+                width: 90px;
+                margin: 5px;
+            }
+
+        }
+    }
+    .info{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        & p{
+            margin: 0;
+        }
+    .NameStatus{
+        padding: 20px 0 20px 20px;
+        display: grid;
+        align-content: space-evenly;
+        .name{
+            @include text(20px, 500, 1.5);
+            color: $primaryColor;
+            font-weight: bolder;
+            text-transform: capitalize;
+            margin: 0;
+        }
+        .userInfo{
+            @include text(16px, 500, 1);            
+        }
+    }
+    .location{
+        display: grid;
+        align-content: space-evenly;
+        padding: 20px 20px 20px 20px;
+        .userInfo{ 
+            @include text(16px, 500, 1);    
+                 
+        }
+    }
+}
+
+}
