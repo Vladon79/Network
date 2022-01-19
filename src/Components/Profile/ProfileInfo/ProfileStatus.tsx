@@ -1,5 +1,4 @@
 import React from "react";
-import { isPropertySignature } from "typescript";
 import s from './ProfileInfo.module.scss';
 
 type ProfileStatusType = {
@@ -27,20 +26,20 @@ class ProfileStatus extends React.Component<ProfileStatusType>  {
 
     render() {
         return (
-            <>
+            <div className={s.profileStatus}>
                 {!this.state.editMode
                     ?
-                    <div>
+                    <div className={s.statusText}>
                         <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
                     </div>
                     :
-                    <div>
+                    <div className={s.statusInput}>
                         <input autoFocus onBlur={this.deactivateEditMode} value={this.props.status} />
                     </div>
                 }
 
 
-            </>
+            </div>
         )
     }
 

@@ -36,7 +36,21 @@
     }
 }
 
+.profileStatus{
+    
+    .statusText{
+        @include text(16px, 500, 26px);
+        padding: 5px;
+    }
+    .statusInput{
+        & input{
+            @include text(14px, 500, 26px);
+            background-color: $inputColor;
+            border-radius: 5px;
+        }
 
+    }
+}
 
   
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import s from './Users.module.scss';
 import userPhoto from './../../assents/image/user.png'
 import { NavLink } from "react-router-dom";
@@ -19,7 +19,7 @@ type UsersPageTypeProps = {
     users: Array<UserType>
 }
 
-const Users = (props: UsersPageTypeProps) => {
+const Users = React.memo((props: UsersPageTypeProps) => {
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     const pages = []
     for (let i = 1; i <= pagesCount; i++) {
@@ -29,26 +29,19 @@ const Users = (props: UsersPageTypeProps) => {
     return (
         <div className={s.users}>
             <div className={s.pageNumber}>
-                {pages.map(p => {
-
-                    return (
-                        <span className={props.currentPage === p ? s.selectedPage : s.notselectpage}
-                            onClick={() => {
-                                console.log(p)
-                                props.onPageChange(p)}}>{p}</span>
-                    )
-                    
-                })}
+                {pages.map(p => <span key={p}
+                    className={props.currentPage === p ? s.selectedPage : s.notselectpage}
+                    onClick={() => props.onPageChange(p)}>{p}</span>
+                )
+                }
 
             </div>
 
             {
-                props.users.map(u => <User user={u} follow={props.follow} unFollow={props.unFollow} followingInProgress={props.followingInProgress} />)
+                props.users.map(u => <User key={u.id} user={u} follow={props.follow} unFollow={props.unFollow} followingInProgress={props.followingInProgress} />)
             }
         </div>
     )
-
-
-}
+})
 
 export default Users
