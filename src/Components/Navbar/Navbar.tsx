@@ -2,12 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { AppStoreType } from '../../redux/redux-store';
-import { UsersType } from '../../redux/users-reducer';
+import { UserType } from '../../redux/users-reducer';
 import s from './Navbar.module.scss';
 
 
 const Navbar = () => {
-  const users = useSelector<AppStoreType, Array<UsersType>>(state => state.usersPage.users)
+  const users = useSelector<AppStoreType, Array<UserType>>(state => state.usersPage.users)
   return (
     <nav className={s.nav}>
       <div className={s.navContainer}>

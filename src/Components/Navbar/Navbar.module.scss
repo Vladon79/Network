@@ -9,10 +9,9 @@
   .navContainer{
     margin: 30px 10px 0 10px;
     background: $blokColor;
-    border-radius: 10px;
+    border-radius: 5px;
     .item{
       text-transform: capitalize;
-      
       & a {
         line-height: 40px;
         padding: 5px;
