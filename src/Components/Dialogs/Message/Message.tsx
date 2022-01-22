@@ -1,11 +1,10 @@
 import React from 'react';
-import s from './Message.module.css'
+import s from './Message.module.scss'
 
 
 type PropsMessege = {
   textMesage: string
   myMassege: boolean
-  
 }
 
 const Messages = ({ textMesage, myMassege, ...props }: PropsMessege) => {

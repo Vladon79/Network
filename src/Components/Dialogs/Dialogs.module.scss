@@ -1,0 +1,62 @@
+@import '../../styles/sass/variables.scss';
+@import '../../styles/sass/mixins.scss';
+
+.dialogs{
+    display: grid;
+    margin-top: 30px;
+    grid-template-columns: 3fr 10fr;
+    background-color: $blokColor;
+    border-radius: 5px;
+    .dialogsItem{
+        margin: 2px;
+        padding: 10px;
+        @include text (13px, 400, 1);
+        & img{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+        .dialog{
+            display: flex;
+            padding: 0 5px 5px 0;
+            
+        }
+        .dialog a{
+            padding: 10px;
+            @include text (15px, 400, 1);
+            text-decoration: none;
+        }
+        .dialog a.active{
+            @include text (15px, 400, 1);
+            color: $primaryColor;
+        
+        }
+
+    }
+    .messages{
+        display: grid;
+        grid-template-rows: 1fr 3fr;
+        text-align: left;
+        border-radius: 10px;
+        margin: 2px;
+        font-size: 20px;
+        color: #F7F8F9;
+        padding: 10px;
+        .addMessage{
+            text-align:right;
+            margin: 10px;
+            border-radius: 10px;
+            & textarea{
+                background-color: $inputColor;
+                width: 97.5%; 
+                height: 60px;
+                border-radius: 5px;
+                resize: none;
+            }
+        }
+        
+    }
+}
+
+
+

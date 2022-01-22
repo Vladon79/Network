@@ -1,9 +1,10 @@
 import React, { ChangeEvent } from 'react';
 import DialogItem from './DialogItem/DialogItem';
-import s from './Dialogs.module.css';
+import s from './Dialogs.module.scss';
 import Messages from './Message/Message';
 import { dialogsType, messagesType } from '../../types/types';
 import { Redirect } from 'react-router-dom';
+import Button from '../common/Button/Button';
 
 type DialogsType = {
   newMessage: string
@@ -35,11 +36,10 @@ const Dialogs = (props: DialogsType) => {
 
     }
   }
-  return (
 
+  return (
     <div className={s.dialogs}>
       <div className={s.dialogsItem}>
-
         {dialogsElement}
       </div>
 
@@ -47,10 +47,8 @@ const Dialogs = (props: DialogsType) => {
         <div>{messagesElement}</div>
 
         <div className={s.addMessage}>
-          <textarea ref={sendMessage} value={props.newMessage} onChange={onChangeHandlerNewMessage} className={s.textarea}></textarea>
-
-          <button onClick={sendMessageOnClickHandler}>Send</button>
-
+          <textarea ref={sendMessage} value={props.newMessage} onChange={onChangeHandlerNewMessage} />
+          <Button onClick={sendMessageOnClickHandler} title={'Send'} />
         </div>
       </div>
     </div>

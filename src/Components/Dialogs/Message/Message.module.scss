@@ -1,0 +1,20 @@
+@import '../../../styles/sass/variables.scss';
+@import '../../../styles/sass/mixins.scss';
+
+.MytextMesage{
+  @include text (15px, 400, 1.2);
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px 5px 5px 0;
+  background-color: $inputColor; 
+}
+
+.YoutextMesage{
+  @include text (15px, 400, 1.2);
+  margin-bottom: 20px;
+  text-align: right;
+  padding: 10px;
+  border-radius: 5px 5px 0 5px;
+  background-color: $primaryColor; 
+
+}
