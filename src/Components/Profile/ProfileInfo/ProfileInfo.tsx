@@ -2,6 +2,7 @@ import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.scss';
 import ProfileStatus from './ProfileStatus';
+import userPhoto from './../../../assents/image/user.png'
 
 type ProfileInfoType = {
   profile:any
@@ -17,7 +18,7 @@ const ProfileInfo = (props:ProfileInfoType) => {
   return (
     <div className={s.PrfileInfo}>
       <div className={s.PrfileInfoImg}>
-        <img className={s.ava} src={props.profile.photos.large} />
+        <img className={s.ava} src={props.profile.photos.large || userPhoto} />
       </div>
       <div className={s.discriptionInfo}>
         <h5 className={s.name}>Vlad Klopot</h5>
