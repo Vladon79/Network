@@ -18,8 +18,10 @@ type PostType = {
   profile: ProfileType
   post: Array<postType>
   NewPostMessage: string
+  status:string
   newPostChange: (text: string) => void
   addPost: (text: string) => void
+  updateStatus:(status:string)=>void
 }
 
 const Profile = (props: PostType) => {
@@ -27,7 +29,7 @@ const Profile = (props: PostType) => {
   return (
     <div className={s.profile}>
       <div className={s.profileContainer}>
-          <ProfileInfo profile={props.profile} />
+          <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
           <MyPost
             post={props.post}
             newPostChange={props.newPostChange}

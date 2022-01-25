@@ -5,6 +5,8 @@ import ProfileStatus from './ProfileStatus';
 
 type ProfileInfoType = {
   profile:any
+  status:string
+  updateStatus:(status:string)=>void
 }
 
 const ProfileInfo = (props:ProfileInfoType) => {
@@ -19,7 +21,7 @@ const ProfileInfo = (props:ProfileInfoType) => {
       </div>
       <div className={s.discriptionInfo}>
         <h5 className={s.name}>Vlad Klopot</h5>
-        <ProfileStatus status={'Hello'} />
+        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
       </div>
     </div>
   )
