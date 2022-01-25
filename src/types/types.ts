@@ -1,6 +1,6 @@
 import { NewMessageChangeAC, SendMessageAC } from "../redux/dialogs-reduser";
 import { followSuccess, unFollowSuccess, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, toggleIsFollowingProgess, usersPageType } from "../redux/users-reducer";
-import { addPost, newPostChange, postPageType, setUsersProfile } from "../redux/profile-reducer";
+import { addPost, newPostChange, postPageType, setStatus, setUsersProfile } from "../redux/profile-reducer";
 import { setAuthUserData } from "../redux/auth-reduser";
 import { Dispatch } from "react";
 
@@ -61,6 +61,7 @@ export type ActionType = AddPostActionType |
     SetFriendsActionType |
     ToggleIsFetchingActionType |
     toggleIsFollowingProgessActionType |
+    setStatusActionType |
     setUserDataActionType;
 
 
@@ -91,3 +92,5 @@ export type NewPostChangeActionType = ReturnType<typeof newPostChange>;
 export type SendMessageType = ReturnType<typeof SendMessageAC>;
 
 export type newMessageChangeType = ReturnType<typeof NewMessageChangeAC>;
+
+export type setStatusActionType = ReturnType<typeof setStatus>;

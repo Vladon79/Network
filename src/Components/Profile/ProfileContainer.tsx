@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import React from "react"
 import { AppStoreType } from '../../redux/redux-store';
 import Profile, { ProfileType } from './Profile';
-import { addPost, newPostChange, setUsersProfile, getUserProfile } from '../../redux/profile-reducer';
+import { addPost, newPostChange, setUsersProfile, getUserProfile, getStatus, updateStatus } from '../../redux/profile-reducer';
 import { postType } from "../../types/types";
 import { RouteComponentProps, withRouter } from "react-router";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
@@ -16,6 +16,7 @@ type MapStateToPropsType = {
   profile: any
   post: postType[]
   NewPostMessage: string
+  status:string
 }
 
 type MapDispachToPropsType = {
@@ -23,6 +24,8 @@ type MapDispachToPropsType = {
   newPostChange: (text: string) => void
   setUsersProfile: (profile: ProfileType) => void
   getUserProfile: (userId: string) => void
+  getStatus: (status: string) => void
+  updateStatus:(status:string)=>void
 }
 
 type ProfileContainerType = MapStateToPropsType & MapDispachToPropsType
@@ -33,14 +36,15 @@ class ProfileContainer extends React.Component<PropsType> {
 
     let userID = this.props.match.params.userID
     if (!userID) {
-      userID = '2'
+      userID = '20598'
     }
     this.props.getUserProfile(userID)
+    this.props.getStatus(userID)
   }
 
   render() {
     return (
-      <Profile {...this.props} profile={this.props.profile} />
+      <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus}/>
     )
   }
 }
@@ -48,6 +52,7 @@ class ProfileContainer extends React.Component<PropsType> {
 const mapStateToProps = (state: AppStoreType): MapStateToPropsType => {
   return {
     profile: state.postPage.profile,
+    status: state.postPage.status,
     post: state.postPage.postData,
     NewPostMessage: state.postPage.NewPostMessage
   }
@@ -55,7 +60,7 @@ const mapStateToProps = (state: AppStoreType): MapStateToPropsType => {
 
 export default compose<React.ComponentType>(
   withAuthRedirect,
-  connect(mapStateToProps, { addPost, newPostChange, setUsersProfile, getUserProfile }),
+  connect(mapStateToProps, { addPost, newPostChange, setUsersProfile, getUserProfile, getStatus, updateStatus }),
   withRouter,
 
 )
