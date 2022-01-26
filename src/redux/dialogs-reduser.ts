@@ -1,10 +1,6 @@
 import { ActionType, messagesPageType, messagesType } from "../types/types"
 
-
-type InitialStateTipe = messagesPageType
-
-const InitialState: InitialStateTipe = {
-    newMessage: '',
+const InitialState: messagesPageType = {
     masseges: [
         { id: 1, message: 'Hi', myMessage: false },
         { id: 2, message: 'How are you', myMessage: true },
@@ -37,18 +33,9 @@ export const dialogsReduser = (state: messagesPageType = InitialState, action: A
                 masseges: [...state.masseges, sendMessageData],
                 newMessage:''
             }
-            // stateCopy.masseges.push(sendMessageData)
-            // stateCopy.newMessage = ''
+           
             
-        }
-        case 'NEW_MESSAGE-CHANGE': {
-            return {
-                ...state,
-                newMessage: action.newMessageText
-            }
-            // stateCopy.newMessage = action.newMessageText
-          
-        }
+        }       
         default:
             return state;
 
@@ -59,12 +46,5 @@ export const SendMessageAC = (sendMessage: string) => {
     return {
         type: 'SEND-MESSAGE',
         sendMessage: sendMessage
-    } as const
-}
-
-export const NewMessageChangeAC = (newMessageText: string) => {
-    return {
-        type: 'NEW_MESSAGE-CHANGE',
-        newMessageText: newMessageText
     } as const
 }

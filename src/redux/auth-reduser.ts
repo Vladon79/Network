@@ -1,5 +1,6 @@
 
 import { authAPI, usersAPI } from "../api/api";
+import { LoginFormPropsType } from "../Components/Login/LoginForm/LoginForm";
 import { ActionType, DispatchType } from "../types/types";
 
 export type authDataType = {
@@ -42,9 +43,20 @@ export const setAuthUserData = (data: authDataType) => {
     } as const
 }
 
+
 export const authMe = () => {
     return (dispatch: DispatchType) => {
         authAPI.me().then(data => {
+            if (data.resultCode === 0) {
+              dispatch(setAuthUserData(data.data))
+            }
+          });
+    }
+}
+
+export const loginMe = (formData: LoginFormPropsType) => {
+    return (dispatch: DispatchType) => {
+        authAPI.login(formData).then(data => {
             if (data.resultCode === 0) {
               dispatch(setAuthUserData(data.data))
             }
