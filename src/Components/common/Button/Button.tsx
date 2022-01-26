@@ -4,9 +4,9 @@ type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonE
 
 
 type ButtonPropsType = DefaultButtonPropsType & {
-    title: string
-    onClick: () => void
-    // disabled?: boolean
+    title?: string
+    onClick?: () => void
+    disabled?: boolean
 
 }
 

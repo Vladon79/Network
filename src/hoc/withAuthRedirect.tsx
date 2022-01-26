@@ -3,11 +3,6 @@ import { connect, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { AppStoreType } from "../redux/redux-store";
 
-
-type LoadingHocType = {
-    Component: () => JSX.Element
-}
-
 // function withAuthRedirect<T>(Component: ComponentType<T>) {
 
 //     const WraperContainer = (props: any) => {

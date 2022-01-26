@@ -46,9 +46,4 @@ const User = ({ user, ...props }: UserPagePropsType) => {
     )
 }
 
-
-
-
-
-
 export default User
