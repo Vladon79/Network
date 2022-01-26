@@ -17,7 +17,7 @@ export type ProfileType = {
 type PostType = {
   profile: ProfileType
   post: Array<postType>
-  NewPostMessage: string
+  newPostMessage: string
   status:string
   newPostChange: (text: string) => void
   addPost: (text: string) => void
@@ -34,7 +34,7 @@ const Profile = (props: PostType) => {
             post={props.post}
             newPostChange={props.newPostChange}
             addPost={props.addPost}
-            NewPostMessage={props.NewPostMessage}
+            NewPostMessage={props.newPostMessage}
           />
       </div>
     </div>

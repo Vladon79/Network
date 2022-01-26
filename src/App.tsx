@@ -4,17 +4,20 @@ import { Store } from 'redux';
 import './App.css';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
-import LoginPage from './Components/Login/Login';
+import LoginPage from './Components/Login/LoginPage';
 import Music from './Components/Music/Music';
 import Navbar from './Components/Navbar/Navbar';
 import News from './Components/News/News';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import Setting from './Components/Setting/Setting';
 import UsersContainer from './Components/Users/UsersContainer';
+import { AppStoreType } from './redux/redux-store';
 import { ActionType } from './types/types';
 
 type AppType = {
-  store: Store<any, ActionType>
+  // store: AppStoreType
+  //store: Store<any, ActionType>
+  store: any
 }
 
 const App = (props: AppType) => {

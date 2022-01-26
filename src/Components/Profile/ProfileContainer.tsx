@@ -15,7 +15,7 @@ type PathParamsType = {
 type MapStateToPropsType = {
   profile: any
   post: postType[]
-  NewPostMessage: string
+  newPostMessage: string
   status:string
 }
 
@@ -54,7 +54,7 @@ const mapStateToProps = (state: AppStoreType): MapStateToPropsType => {
     profile: state.postPage.profile,
     status: state.postPage.status,
     post: state.postPage.postData,
-    NewPostMessage: state.postPage.NewPostMessage
+    newPostMessage: state.postPage.NewPostMessage
   }
 }
 
@@ -62,6 +62,5 @@ export default compose<React.ComponentType>(
   withAuthRedirect,
   connect(mapStateToProps, { addPost, newPostChange, setUsersProfile, getUserProfile, getStatus, updateStatus }),
   withRouter,
-
 )
   (ProfileContainer)
