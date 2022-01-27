@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { loginMe } from '../../redux/auth-reduser';
 import Button from '../common/Button/Button';
 import ReduxLoginForm, { LoginFormPropsType } from './LoginForm/LoginForm';
 import s from './LoginPage.module.scss';
@@ -9,7 +10,8 @@ import s from './LoginPage.module.scss';
 const LoginPage = () => {
 
   const onSubmit = (formData: LoginFormPropsType) => {
-    console.log(formData)
+    console.log(formData)   
+    loginMe (formData)
   }
   return (
     <div className={s.loginContainer}>

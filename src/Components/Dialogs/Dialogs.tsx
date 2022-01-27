@@ -5,6 +5,9 @@ import Messages from './Message/Message';
 import { dialogsType, messagesType } from '../../types/types';
 import { Redirect } from 'react-router-dom';
 import Button from '../common/Button/Button';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { Textarea } from '../common/FormsControls/FormsControls';
+import { maxLengthCreator, required } from '../../utils/validators/validator';
 
 type DialogsType = {
   newMessage: string
@@ -20,21 +23,9 @@ const Dialogs = (props: DialogsType) => {
   const messagesElement = props.messages.map(m => <Messages key={m.id} textMesage={m.message} myMassege={m.myMessage} />)
   const dialogsElement = props.dialogs.map(d => <DialogItem key={d.id} name={d.name} id={d.id} ava={d.ava} />)
 
-  const sendMessage = React.createRef<HTMLTextAreaElement>()
-
-  const sendMessageOnClickHandler = () => {
-    if (sendMessage.current) {
-      props.SendMessage(sendMessage.current.value)
-
-      sendMessage.current.value = ''
-    }
-  }
-
-  const onChangeHandlerNewMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    if (sendMessage.current) {
-      props.NewMessageChange(sendMessage.current.value)
-
-    }
+  const onSubmit = ({ newMessage }: DialogsFormPropsType) => {
+    console.log(newMessage)
+    props.SendMessage(newMessage)
   }
 
   return (
@@ -47,11 +38,35 @@ const Dialogs = (props: DialogsType) => {
         <div>{messagesElement}</div>
 
         <div className={s.addMessage}>
-          <textarea ref={sendMessage} value={props.newMessage} onChange={onChangeHandlerNewMessage} />
-          <Button onClick={sendMessageOnClickHandler} title={'Send'} />
+          <DialogReduxForm onSubmit={onSubmit} />
         </div>
       </div>
     </div>
   )
 }
 export default Dialogs;
+
+export type DialogsFormPropsType = {
+  newMessage: string
+}
+
+const maxLength200 = maxLengthCreator(200)
+
+const DialogsForm: React.FC<InjectedFormProps<DialogsFormPropsType>> = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit} className={s.form}>
+      {/* e.prevendDefault:сбор всех данных,упаковываются в обьект: контейнерная компонента вызывает onSubmit(formData) */}
+      <div>
+        <Field placeholder={'New message'} name={'newMessage'} component={Textarea} validate={[required, maxLength200]} className={s.input} />
+      </div>
+      <div>
+        <button>Send</button>
+        {/* <Button title={'Login'} onClick={}/> */}
+      </div>
+    </form>
+  )
+}
+
+
+
+const DialogReduxForm = reduxForm<DialogsFormPropsType>({ form: 'newMessage' })(DialogsForm)

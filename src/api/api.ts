@@ -1,4 +1,5 @@
 import axios from "axios";
+import { LoginFormPropsType } from "../Components/Login/LoginForm/LoginForm";
 
 
 const instance = axios.create({
@@ -29,20 +30,24 @@ export const usersAPI = {
 
 export const profileAPI = {
     getProfile(userID: string) {
-        return instance.get(`profile/` + userID
-        ).then(response => response.data)
+        return instance.get(`profile/` + userID)
+            .then(response => response.data)
     },
-    getStatus(userID:string){
+    getStatus(userID: string) {
         return instance.get(`profile/status/` + userID)
     },
-    updateStatus(status:string){
-        return instance.put(`profile/status`, {status: status})
+    updateStatus(status: string) {
+        return instance.put(`profile/status`, { status: status })
     }
 }
 
 export const authAPI = {
-    me(){
+    me() {
         return instance.get(`auth/me`)
-        .then(response => response.data)
+            .then(response => response.data)
+    },
+    login(formData: LoginFormPropsType) {
+        return instance.post(`/auth/login`)
+            .then(response => response.data)
     }
 }

@@ -4,13 +4,11 @@ import { ActionType, DispatchType, postType } from "../types/types"
 
 export type postPageType = {
   postData: Array<postType>
-  NewPostMessage: string
   profile: any
   status: string
 }
 
 const InitialState: postPageType = {
-  NewPostMessage: '',
   postData: [
     { id: 1, message: 'Today I go to the cinema', numberLike: 12 },
     { id: 2, message: 'Haw are you?', numberLike: 20 },
@@ -31,13 +29,9 @@ export const profileReducer = (state: postPageType = InitialState, action: Actio
       return {
         ...state,
         postData: [...state.postData, newPostAddData],
-        NewPostMessage: ''
+
       }
     }
-
-    case 'NEW-POST-CHANGE':
-      return { ...state, NewPostMessage: action.NewPostText }
-
     case 'SET-USER-PROFILE':
       return { ...state, profile: action.profile }
 
@@ -53,13 +47,6 @@ export const addPost = (newPostAdd: string) => {
   return {
     type: 'ADD-POST',
     newPostAdd: newPostAdd
-  } as const
-}
-
-export const newPostChange = (NewPostText: string) => {
-  return {
-    type: 'NEW-POST-CHANGE',
-    NewPostText: NewPostText
   } as const
 }
 
