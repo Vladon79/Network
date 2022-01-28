@@ -2,6 +2,8 @@
 @import '../../styles/sass/mixins.scss';
 
 .header{
+  position: fixed;
+  width: 100%;
   grid-area: h;
   background: $headerColor;
   text-align: center;

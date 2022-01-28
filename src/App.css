@@ -51,7 +51,7 @@ ul li {
 "h h h"
 "n c r";
 
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 50px 1fr;
   grid-template-columns: 1fr 2fr 1fr;
   /* grid-gap: 10px; */
 
