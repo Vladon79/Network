@@ -3,11 +3,12 @@
 .formControl{
     
 }
-.error input, 
-.error textarea{
-    border: solid red 1px;
-}
-
-.error span{
-     color:red
+.error {
+    & input, textarea{
+        border: solid red 1px;
+    }
+    & span{
+        color:red;
+        margin: 0
+    }
 }
