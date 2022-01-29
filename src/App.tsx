@@ -23,6 +23,7 @@ type AppType = {
 const App = (props: AppType) => {
   return (
     <BrowserRouter>
+      <div>vjhj</div>
       <div className='app-wrapper'>
         <HeaderContainer />
         <Navbar />
