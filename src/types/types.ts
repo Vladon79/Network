@@ -1,7 +1,7 @@
 import { SendMessageAC } from "../redux/dialogs-reduser";
 import { followSuccess, unFollowSuccess, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, toggleIsFollowingProgess, usersPageType } from "../redux/users-reducer";
 import { addPost,  postPageType, setStatus, setUsersProfile } from "../redux/profile-reducer";
-import { setAuthUserData } from "../redux/auth-reduser";
+import {authMe, setAuthUserData} from "../redux/auth-reduser";
 import { Dispatch } from "react";
 
 
@@ -59,8 +59,6 @@ export type ActionType = AddPostActionType |
     toggleIsFollowingProgessActionType |
     setStatusActionType |
     setUserDataActionType;
-
-
 
 
 export type toggleIsFollowingProgessActionType = ReturnType<typeof toggleIsFollowingProgess>

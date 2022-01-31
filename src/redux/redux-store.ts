@@ -2,22 +2,22 @@ import { dialogsReduser } from './dialogs-reduser';
 import { profileReducer } from './profile-reducer';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import {  usersReducer } from './users-reducer';
-import { authReduser } from './auth-reduser';
+import { authReducer } from './auth-reduser';
 import  thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form'
 
 
-const redusers = combineReducers({
+const reducers = combineReducers({
     postPage: profileReducer,
     messagePage: dialogsReduser,
     usersPage: usersReducer,
-    auth: authReduser,
+    auth: authReducer,
     form: formReducer
 })
 
-export type AppStoreType = ReturnType<typeof redusers>
+export type AppStoreType = ReturnType<typeof reducers>
 
-const reduxStore = createStore(redusers, applyMiddleware(thunkMiddleware));
+const reduxStore = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 
 export default reduxStore

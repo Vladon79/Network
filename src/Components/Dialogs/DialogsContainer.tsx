@@ -15,7 +15,7 @@ const mapStateToProps = (state: AppStoreType) => {
   }
 }
 
-const mapDispachToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     SendMessage: (text: string) => {
       dispatch(SendMessageAC(text))
@@ -24,5 +24,6 @@ const mapDispachToProps = (dispatch: Dispatch) => {
 }
 
 export default compose<React.ComponentType>(
-  connect(mapStateToProps, mapDispachToProps)
+    withAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps)
 )(Dialogs)
