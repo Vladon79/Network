@@ -5,25 +5,26 @@ import { maxLengthCreator, required } from '../../../utils/validators/validator'
 import Button from '../../common/Button/Button';
 import { Input } from '../../common/FormsControls/FormsControls';
 import s from './LoginForm.module.scss';
+import {logoutMe} from "../../../redux/auth-reduser";
 
 
 export type LoginFormPropsType = {
-    login: string
+    email: string
     password: string
     rememberMe: boolean
 }
 
-const maxLength15 = maxLengthCreator(15)
+const maxLength30 = maxLengthCreator(30)
 
 const LoginForm: React.FC<InjectedFormProps<LoginFormPropsType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
             {/* e.prevendDefault:сбор всех данных,упаковываются в обьект: контейнерная компонента вызывает onSubmit(formData) */}
             <div>
-                <Field placeholder={'Login'} name={'login'} component={Input} validate={[required, maxLength15]} className={s.input} />
+                <Field placeholder={'email'} name={'email'} component={Input} validate={[required, maxLength30]} className={s.input} />
             </div>
             <div>
-                <Field placeholder={'Passward'} name={'passward'} component={Input} validate={[required, maxLength15]} className={s.input} />
+                <Field placeholder={'password'} type={'password'} name={'password'} component={Input} validate={[required, maxLength30]} className={s.input} />
             </div>
             <div>
                 <Field type={'checkbox'} component={'input'} name={'rememberMe'} className={s.checkbox} /> remember me
