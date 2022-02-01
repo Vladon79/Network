@@ -2,6 +2,7 @@
 import { authAPI, usersAPI } from "../api/api";
 import { LoginFormPropsType } from "../Components/Login/LoginForm/LoginForm";
 import { ActionType, DispatchType } from "../types/types";
+import {stopSubmit} from "redux-form";
 
 export type authDataType = {
     id: number | null
@@ -54,12 +55,15 @@ export const authMe = () => {
 
 export const loginMe = (formData: LoginFormPropsType) => {
     return (dispatch: any) => {
-        console.log(formData)
         authAPI.login(formData)
             .then(response => {
             console.log(response.data)
             if (response.data.resultCode === 0) {
               dispatch(authMe())
+            }
+            else{
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'someError'
+                dispatch(stopSubmit('login',{_error:message}))
             }
           });
     }

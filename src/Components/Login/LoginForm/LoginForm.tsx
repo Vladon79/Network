@@ -6,6 +6,7 @@ import Button from '../../common/Button/Button';
 import { Input } from '../../common/FormsControls/FormsControls';
 import s from './LoginForm.module.scss';
 import {logoutMe} from "../../../redux/auth-reduser";
+import style from '../../common/FormsControls/FormsControls.module.scss'
 
 
 export type LoginFormPropsType = {
@@ -29,6 +30,9 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormPropsType>> = (props) => {
             <div>
                 <Field type={'checkbox'} component={'input'} name={'rememberMe'} className={s.checkbox} /> remember me
             </div>
+            {props.error && <div className={style.formSummaryError}>
+                {props.error}
+            </div>}
             <div>
                 <button>Login</button>
                 {/* <Button title={'Login'} onClick={}/> */}

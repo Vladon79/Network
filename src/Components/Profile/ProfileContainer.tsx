@@ -16,6 +16,7 @@ type MapStateToPropsType = {
   profile: any
   post: postType[]
   status:string
+  userID:number | null
 }
 
 type MapDispachToPropsType = {
@@ -35,7 +36,7 @@ class ProfileContainer extends React.Component<PropsType> {
 
     let userID = this.props.match.params.userID
     if (!userID) {
-      userID = '20598'
+      userID = String(this.props.userID)
     }
     this.props.getUserProfile(userID)
     this.props.getStatus(userID)
@@ -53,6 +54,7 @@ const mapStateToProps = (state: AppStoreType): MapStateToPropsType => {
     profile: state.postPage.profile,
     status: state.postPage.status,
     post: state.postPage.postData,
+    userID: state.auth.id,
   }
 }
 
