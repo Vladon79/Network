@@ -65,16 +65,7 @@ const mapStateToProps = (state: AppStoreType) => {
         followingInProgress: getFollowingInProgress(state)
     }
 }
-// const mapStateToProps = (state: AppStoreType) => {
-//     return {
-//         users: state.usersPage.users,
-//         pageSize: state.usersPage.pageSize,
-//         totalUsersCount: state.usersPage.totalUsersCount,
-//         currentPage: state.usersPage.currentPage,
-//         isFetching: state.usersPage.isFetching,
-//         followingInProgress: state.usersPage.followingInProgress
-//     }
-// }
+
 export default compose<React.ComponentType>(
     connect(mapStateToProps, { followSuccess, unFollowSuccess, setCurrentPage, requestUsers, follow, unFollow }))
     (UsersContainer)
