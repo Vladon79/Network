@@ -13,13 +13,11 @@ export type TextareaPropsType = {
   const MyPostTextareaForm: React.FC<InjectedFormProps<TextareaPropsType>> = (props) => {
     return (
       <form onSubmit={props.handleSubmit} className={s.form}>
-        {/* e.prevendDefault:сбор всех данных,упаковываются в обьект: контейнерная компонента вызывает onSubmit(formData) */}
         <div>
-          <Field placeholder={'Add new post'} name={'newPost'} component={Textarea} validate={[required, maxLength30]} className={s.textarea} />
+          <Field placeholder={'Add new post'} name={'newPost'} component={Textarea} validate={[required, maxLength30]}/>
         </div>
         <div>
           <button>Login</button>
-          {/* <Button title={'Login'} onClick={}/> */}
         </div>
       </form>
     )

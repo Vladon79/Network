@@ -1,26 +1,37 @@
 @import '../../styles/sass/variables.scss';
 @import '../../styles/sass/mixins.scss';
 
-.header{
+.header {
   position: fixed;
   width: 100%;
   grid-area: h;
   background: $headerColor;
   text-align: center;
-  & img{
+
+  & img {
     width: 50px;
     padding: 4px;
     border-radius: 50%;
   }
-  .loginBlock{
+
+  .loginBlock {
     float: right;
     padding-right: 10px;
     padding-top: 15px;
-    @include text( 20px, 500, 1.5);
+    @include text(20px, 500, 1.5);
+
+    & button {
+      border: medium none;
+      @include text(13px, 500, 1.5);
+      padding: 5px 10px;
+      border-radius: 4px;
+      background-color: $primaryColor;
+    }
+
     & a {
       padding-right: 10px;
       padding-top: 15px;
-      @include text( 20px, 500, 1.5);
+      @include text(20px, 500, 1.5);
     }
   }
 }
