@@ -68,6 +68,6 @@ const mapStateToProps = (state: AppStoreType) => {
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {followSuccess, unFollowSuccess, setCurrentPage, requestUsers, follow, unFollow}))
+    connect(mapStateToProps, {followSuccess, unFollowSuccess, setCurrentPage, follow, unFollow, requestUsers}))
 (UsersContainer)
 
