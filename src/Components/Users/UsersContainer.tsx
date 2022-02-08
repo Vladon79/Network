@@ -1,10 +1,18 @@
-import { connect } from 'react-redux';
-import { AppStoreType } from '../../redux/redux-store';
-import { followSuccess, unFollowSuccess, setCurrentPage, UserType, follow, unFollow, requestUsers } from '../../redux/users-reducer';
+import {connect} from 'react-redux';
+import {AppStoreType} from '../../redux/redux-store';
+import {
+    followSuccess,
+    unFollowSuccess,
+    setCurrentPage,
+    UserType,
+    follow,
+    unFollow,
+    requestUsers
+} from '../../redux/users-reducer';
 import React from "react";
 import Users from "./Users";
 import Preloader from '../common/Preloader/Preloader';
-import { compose } from 'redux';
+import {compose} from 'redux';
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -27,18 +35,19 @@ type UsersPageType = {
     follow: (id: number) => void
     unFollow: (id: number) => void
 }
-class UsersContainer extends React.Component<UsersPageType>{
+
+class UsersContainer extends React.Component<UsersPageType> {
     componentDidMount() {
         this.props.requestUsers(this.props.currentPage, this.props.pageSize)
     }
 
-    onPageChange = (pageNumber: number) => {        
+    onPageChange = (pageNumber: number) => {
         this.props.requestUsers(pageNumber, this.props.pageSize)
     }
-    
+
     render() {
         return <>
-            {this.props.isFetching ? <Preloader /> : null}
+            {this.props.isFetching ? <Preloader/> : null}
             < Users
                 totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
@@ -67,6 +76,6 @@ const mapStateToProps = (state: AppStoreType) => {
 }
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, { followSuccess, unFollowSuccess, setCurrentPage, requestUsers, follow, unFollow }))
-    (UsersContainer)
+    connect(mapStateToProps, {followSuccess, unFollowSuccess, setCurrentPage, requestUsers, follow, unFollow}))
+(UsersContainer)
 
