@@ -43,13 +43,14 @@ export const setAuthUserData = (data: authDataType) => {
 }
 
 
-export const authMe = () => (dispatch: DispatchType) => {
-       return authAPI.me().then(data  => {
+export const authMe = () => {
+    return (dispatch: DispatchType) => {
+        authAPI.me().then(data  => {
             if (data.resultCode === 0) {
               dispatch(setAuthUserData({isAuth: true, ...data.data}))
             }
           });
-
+    }
 }
 
 export const loginMe = (formData: LoginFormPropsType) => {

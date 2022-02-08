@@ -3,7 +3,6 @@ import { followSuccess, unFollowSuccess, setCurrentPage, setTotalUsersCount, set
 import { addPost,  postPageType, setStatus, setUsersProfile } from "../redux/profile-reducer";
 import {authMe, setAuthUserData} from "../redux/auth-reduser";
 import { Dispatch } from "react";
-import {initializetSuccess} from "../redux/app-reducer";
 
 
 
@@ -59,11 +58,8 @@ export type ActionType = AddPostActionType |
     ToggleIsFetchingActionType |
     toggleIsFollowingProgessActionType |
     setStatusActionType |
-    setUserDataActionType |
-    initializetSuccessType ;
+    setUserDataActionType;
 
-
-export type initializetSuccessType = ReturnType<typeof initializetSuccess>
 
 export type toggleIsFollowingProgessActionType = ReturnType<typeof toggleIsFollowingProgess>
 
