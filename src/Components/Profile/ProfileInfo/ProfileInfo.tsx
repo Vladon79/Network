@@ -3,6 +3,7 @@ import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.scss';
 import ProfileStatus from './ProfileStatus';
 import userPhoto from './../../../assents/image/user.png'
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 type ProfileInfoType = {
   profile:any
@@ -22,7 +23,7 @@ const ProfileInfo = (props:ProfileInfoType) => {
       </div>
       <div className={s.discriptionInfo}>
         <h5 className={s.name}>Vlad Klopot</h5>
-        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
       </div>
     </div>
   )
