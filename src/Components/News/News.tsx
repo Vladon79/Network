@@ -1,14 +1,16 @@
 import React from 'react';
-import s from './News.module.css';
+import {useDispatch} from "react-redux";
 
 
 const News = () => {
+    const dispatch = useDispatch()
     return (
 
-       <div>
-         News
-       </div>
-  
+        <div>
+            News
+
+        </div>
+
     )
 }
 export default News;

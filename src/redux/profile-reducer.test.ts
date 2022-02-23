@@ -1,60 +1,30 @@
-import { usersAPI } from "../api/api";
-import { DispatchType } from "../types/types";
-import { addPost, newPostChange, postPageType, profileReducer, setUsersProfile } from "./profile-reducer";
+import {addPost, deletePost, postPageType, profileReducer} from "./profile-reducer";
 
-
-test('add post', () => {
-  const startState: postPageType = {
-    NewPostMessage: '',
+const state: postPageType = {
     postData: [
-      { id: 1, message: 'Today I go to the cinema', numberLike: 12 },
-      { id: 2, message: 'Haw are you?', numberLike: 20 },
-      { id: 3, message: "It's my firs post!", numberLike: 100 }
+        {id: 1, message: 'Today I go to the cinema', numberLike: 12},
+        {id: 2, message: 'Haw are you?', numberLike: 20},
+        {id: 3, message: "It's my firs post!", numberLike: 100}
     ],
-    profile:null
-  }
-      
-  const action = addPost('new post');
+    profile: null,
+    status: '',
+}
 
-  const endState = profileReducer(startState, action)
+test('new post should be added', () => {
 
-  expect(endState.postData.length).toBe(4);
-  expect(endState.postData[3].message).toBe('new post');
-  expect(endState.postData[3].id).toBe(5);
+    let action = addPost('new post')
+    let newState = profileReducer(state, action)
+
+    expect(newState.postData.length).toBe(4)
+    expect(newState.postData[3].message).toBe('new post')
 })
 
-test('new post text', () => {
-  const startState: postPageType = {
-    NewPostMessage: '',
-    postData: [
-      { id: 1, message: 'Today I go to the cinema', numberLike: 12 },
-      { id: 2, message: 'Haw are you?', numberLike: 20 },
-      { id: 3, message: "It's my firs post!", numberLike: 100 }
-    ],
-    profile:null
-  }     
-  const action = newPostChange('new post');
+test('delete post', () => {
 
-  const endState = profileReducer(startState, action)
+    let action = deletePost(1)
+    let newState = profileReducer(state, action)
 
-  expect(endState.NewPostMessage).toBe('new post');
+    expect(newState.postData.length).toBe(2)
+    expect(newState.postData[0].message).toBe('Haw are you?')
 })
-
-test('set user profile', () => {
-  const startState: postPageType = {
-    NewPostMessage: '',
-    postData: [
-      { id: 1, message: 'Today I go to the cinema', numberLike: 12 },
-      { id: 2, message: 'Haw are you?', numberLike: 20 },
-      { id: 3, message: "It's my firs post!", numberLike: 100 }
-    ],
-    profile:null
-  }     
-  const action = setUsersProfile('new user');
-
-  const endState = profileReducer(startState, action)
-
-  expect(endState.profile).toBe('new user');
-})
-
 

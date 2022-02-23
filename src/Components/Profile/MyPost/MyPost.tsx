@@ -3,6 +3,7 @@ import {postType} from '../../../types/types';
 import s from './MyPost.module.scss';
 import {TextareaPropsType, TextareaReduxForm} from './MyPostTextareaForm';
 import Post from './Post/Post';
+import userPhoto from "../../../assents/image/user.png";
 
 type MyPostType = {
     post: Array<postType>
@@ -19,8 +20,7 @@ const MyPost = React.memo((props: MyPostType) => {
         <div className={s.mypost}>
             <div className={s.mypostContainer}>
                 <div>
-                    <img className={s.ava}
-                         src='https://images.unsplash.com/photo-1562569633-622303bafef5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'/>
+                    <img className={s.ava} src={userPhoto} />
                 </div>
                 <TextareaReduxForm onSubmit={onAddPost}/>
             </div>
