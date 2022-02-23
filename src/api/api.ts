@@ -1,5 +1,6 @@
 import axios from "axios";
 import { LoginFormPropsType } from "../Components/Login/LoginForm/LoginForm";
+import image from "../assents/image/Typescript_logo.png"
 
 
 const instance = axios.create({
@@ -38,7 +39,7 @@ export const profileAPI = {
     },
     updateStatus(status: string) {
         return instance.put(`profile/status`, { status: status })
-    }
+    },
 }
 
 export const authAPI = {
