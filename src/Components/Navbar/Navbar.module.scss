@@ -1,36 +1,14 @@
 @import '../../styles/sass/variables.scss';
 @import '../../styles/sass/mixins.scss';
 
-.nav{
+.nav {
   grid-area: n;
   background: $bgColor;
   text-align: center;
-  @include text( 14px, 400, 1.5);
-  .navContainer{
+
+  .navContainer {
     margin: 30px 10px 0 10px;
     background: $blokColor;
     border-radius: 5px;
-    .item{
-      text-transform: capitalize;
-      & a {
-        line-height: 40px;
-        padding: 5px;
-        text-decoration: none;
-        color: $textColor;
-      }
-      & a.active{
-        color: $primaryColor;
-        
-      }
-      & img{
-        margin: 3px;
-        width: 50px;
-        height: 50px;
-        border-radius: 40px;
-    }
-  
-
   }
-  
-}
 }

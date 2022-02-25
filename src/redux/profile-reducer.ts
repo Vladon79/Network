@@ -33,7 +33,7 @@ export const profileReducer = (state: postPageType = InitialState, action: Actio
             }
         }
         case "DELETE-POST":
-            return{
+            return {
                 ...state,
                 postData: [...state.postData.filter(p => p.id !== action.id && p)]
             }
@@ -77,23 +77,21 @@ export const setStatus = (status: string) => {
 }
 
 
-export const getUserProfile = (userID: string) => (dispatch: DispatchType) => {
-    usersAPI.getProfile(userID).then(data => {
-        dispatch(setUsersProfile(data))
-    });
+export const getUserProfile = (userID: string) => async (dispatch: DispatchType) => {
+    const data = await usersAPI.getProfile(userID)
+    dispatch(setUsersProfile(data))
 }
 
-export const getStatus = (userID: string) => (dispatch: DispatchType) => {
-    profileAPI.getStatus(userID).then(response => {
-        dispatch(setStatus(response.data))
-    });
+export const getStatus = (userID: string) => async (dispatch: DispatchType) => {
+    const response = await profileAPI.getStatus(userID)
+    dispatch(setStatus(response.data))
+
 }
 
-export const updateStatus = (status: string) => (dispatch: DispatchType) => {
-    profileAPI.updateStatus(status).then(response => {
-        if (response.data.resultCode === 0) {
-            dispatch(setStatus(status))
-        }
-    });
+export const updateStatus = (status: string) => async (dispatch: DispatchType) => {
+    const response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status))
+    }
 }
 

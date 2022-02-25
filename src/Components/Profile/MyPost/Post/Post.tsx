@@ -7,7 +7,6 @@ type Likes = {
     massage: string
 }
 
-
 const Post = (props: Likes) => {
     return (
         <div className={s.post}>
@@ -20,7 +19,6 @@ const Post = (props: Likes) => {
                     <span>♥</span>{props.like}
                 </div>
             </div>
-
         </div>
 
     )

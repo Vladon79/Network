@@ -1,4 +1,4 @@
-import {addPost, deletePost, postPageType, profileReducer} from "./profile-reducer";
+import {addPost, deletePost, postPageType, profileReducer, setStatus, setUsersProfile} from "./profile-reducer";
 
 const state: postPageType = {
     postData: [
@@ -27,4 +27,16 @@ test('delete post', () => {
     expect(newState.postData.length).toBe(2)
     expect(newState.postData[0].message).toBe('Haw are you?')
 })
+
+test('set new status', () => {
+
+    let action = setStatus('new status')
+    let newState = profileReducer(state, action)
+
+    expect(newState.status).toBe('new status')
+})
+
+
+
+
 

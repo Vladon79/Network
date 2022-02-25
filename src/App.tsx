@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import {compose, Store } from 'redux';
+import {Route} from 'react-router-dom';
+import {compose} from 'redux';
 import './App.css';
 import DialogsContainer from './Components/Dialogs/DialogsContainer';
 import HeaderContainer from './Components/Header/HeaderContainer';
@@ -11,13 +11,11 @@ import News from './Components/News/News';
 import ProfileContainer from './Components/Profile/ProfileContainer';
 import Setting from './Components/Setting/Setting';
 import UsersContainer from './Components/Users/UsersContainer';
-import { AppStoreType } from './redux/redux-store';
-import { ActionType } from './types/types';
-import {connect, Provider} from "react-redux";
-
-
+import {AppStoreType} from './redux/redux-store';
+import {connect} from "react-redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./Components/common/Preloader/Preloader";
+
 
 type AppType = {
   // store: AppStoreType
@@ -38,7 +36,7 @@ class App extends React.Component<AppType> {
    }
 
     return (
-        <BrowserRouter>
+
           <div className='app-wrapper'>
             <HeaderContainer/>
             <Navbar/>
@@ -52,7 +50,7 @@ class App extends React.Component<AppType> {
               <Route path='/login' render={() => <LoginPage/>}/>
             </div>
           </div>
-        </BrowserRouter>
+
     );
   }
 }

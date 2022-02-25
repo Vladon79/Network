@@ -1,0 +1,21 @@
+@import '../../../styles/sass/variables.scss';
+@import '../../../styles/sass/mixins.scss';
+
+.pageNumber {
+  display: flex;
+  justify-content: center;
+  @include text(14px, 500, 1.2);
+
+  .selectedPage {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    padding: 5px;
+    font-weight: bolder;
+    color: $primaryColor;
+  }
+
+  .notselectpage {
+    padding: 5px;
+  }
+}

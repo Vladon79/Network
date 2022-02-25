@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginFormPropsType } from "../Components/Login/LoginForm/LoginForm";
+import {LoginFormPropsType} from "../Components/Login/LoginForm/LoginForm";
 import image from "../assents/image/Typescript_logo.png"
 
 
@@ -12,7 +12,7 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-    getUsers(currentPage: number = 1, pageSize: number = 10) {
+    getUsers(currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`,
         ).then(response => response.data)
     },
@@ -38,7 +38,7 @@ export const profileAPI = {
         return instance.get(`profile/status/` + userID)
     },
     updateStatus(status: string) {
-        return instance.put(`profile/status`, { status: status })
+        return instance.put(`profile/status`, {status: status})
     },
 }
 

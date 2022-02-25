@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React, {ChangeEvent} from "react";
 import s from './ProfileInfo.module.scss';
 
 type ProfileStatusType = {
@@ -11,7 +11,7 @@ type localStateType = {
     status: string
 }
 
-class ProfileStatus extends React.Component<ProfileStatusType>  {
+class ProfileStatus extends React.Component<ProfileStatusType> {
 
     state: localStateType = {
         editMode: false,
@@ -46,6 +46,7 @@ class ProfileStatus extends React.Component<ProfileStatusType>  {
             })
         }
     }
+
     render() {
         return (
             <div className={s.profileStatus}>
@@ -56,11 +57,10 @@ class ProfileStatus extends React.Component<ProfileStatusType>  {
                     </div>
                     :
                     <div className={s.statusInput}>
-                        <input autoFocus onChange={this.onStatusChange} onBlur={this.deactivateEditMode} value={this.state.status} />
+                        <input autoFocus onChange={this.onStatusChange} onBlur={this.deactivateEditMode}
+                               value={this.state.status}/>
                     </div>
                 }
-
-
             </div>
         )
     }
