@@ -2,26 +2,29 @@
 @import '../../../styles/sass/mixins.scss';
 
 
-.form{
-    display: grid;
-    justify-items: center;
-    @include text (17px, 500, 1.2);
-    .input{
-        @include text (15px, 500, 1.2);
-        background-color: $inputColor;
-        border-radius: 5px;
-        padding: 5px;
-        margin: 10px;
-    }
-    .checkbox {
-        position:relative;     
-    }
-    & button{
-        margin-top: 10px;
-        border: medium none;
-        @include text( 13px, 500, 1.5);
-        padding: 4px 20px;
-        border-radius: 4px;
-        background-color:$primaryColor;
-    }
+.form {
+  display: grid;
+  justify-items: center;
+  @include text(17px, 500, 1.2);
+
+  .input {
+    @include text(15px, 500, 1.2);
+    background-color: $inputColor;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+  }
+
+  .checkbox {
+    position: relative;
+  }
+
+  & button {
+    margin-top: 10px;
+    border: medium none;
+    @include text(13px, 500, 1.5);
+    padding: 4px 20px;
+    border-radius: 4px;
+    background-color: $primaryColor;
+  }
 }

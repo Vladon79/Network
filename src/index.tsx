@@ -3,17 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 import reduxStore from './redux/redux-store';
+import {BrowserRouter} from "react-router-dom";
 
-  ReactDOM.render(
+ReactDOM.render(
     <React.StrictMode>
-      <Provider store={reduxStore}>
-        <App store={reduxStore}/>
-      </Provider>
+        <BrowserRouter>
+            <Provider store={reduxStore}>
+                <App store={reduxStore}/>
+            </Provider>
+        </BrowserRouter>
     </React.StrictMode>,
     document.getElementById('root')
-  );
+);
 
 
 // let state = useSelector<AppStoreType, Array<stateType>>(s=>state)

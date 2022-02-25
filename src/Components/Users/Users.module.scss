@@ -2,22 +2,8 @@
 @import '../../styles/sass/mixins.scss';
 
 
-.users{
-    .pageNumber{
-        display: flex;
-        justify-content: center;        
-        @include text(14px, 500, 1.2);
-        .notselectpage{
-            padding: 5px;
-        }
-        .selectedPage{
-            font-size: 15px;
-            padding: 5px;
-            font-weight: bolder;
-            color: $primaryColor;
-        }
+.users {
 
-    }
 }
 
 

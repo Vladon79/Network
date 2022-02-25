@@ -14,7 +14,6 @@ type UserPagePropsType = {
 }
 
 const User = ({ user, ...props }: UserPagePropsType) => {
-
     return (
         <div className={s.userPage}>
             <div className={s.avaButton}>
@@ -35,7 +34,7 @@ const User = ({ user, ...props }: UserPagePropsType) => {
             <div className={s.info}>
                 <div className={s.NameStatus}>
                     <h4 className={s.name}>{user.name}</h4>
-                    <p className={s.userInfo}>status:{user.status}</p>
+                    <p className={s.userInfo}>status: {user.status  || 'Hello'}</p>
                 </div>
                 <div className={s.location}>
                     <p className={s.userInfo}>country:{user.location?.country}</p>

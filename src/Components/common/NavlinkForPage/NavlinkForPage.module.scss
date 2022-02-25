@@ -1,0 +1,19 @@
+@import '../../../styles/sass/variables.scss';
+@import '../../../styles/sass/mixins.scss';
+
+.item {
+  text-transform: capitalize;
+  @include text(14px, 400, 1.5);
+
+  & a {
+    line-height: 40px;
+    padding: 5px;
+    text-decoration: none;
+    color: $textColor;
+  }
+
+  & a.active {
+    color: $primaryColor;
+
+  }
+}

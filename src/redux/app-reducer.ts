@@ -1,12 +1,8 @@
-
-import { authAPI, usersAPI } from "../api/api";
-import { LoginFormPropsType } from "../Components/Login/LoginForm/LoginForm";
-import { ActionType, DispatchType } from "../types/types";
-import {stopSubmit} from "redux-form";
+import {ActionType} from "../types/types";
 import {authMe} from "./auth-reduser";
 
 export type appDataType = {
-   initializet: boolean
+    initializet: boolean
 }
 
 
@@ -20,7 +16,7 @@ export const appReducer = (state: appDataType = InitialState, action: ActionType
         case 'INITIALIZET-SUCCESS': {
             return {
                 ...state,
-                initializet:true
+                initializet: true
 
             }
         }
@@ -40,7 +36,7 @@ export const initializetSuccess = () => {
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(authMe())
 
-    Promise.all([promise]).then(()=>dispatch(initializetSuccess()))
+    Promise.all([promise]).then(() => dispatch(initializetSuccess()))
 
 
 }

@@ -1,13 +1,14 @@
 @import '../../styles/sass/variables.scss';
 @import '../../styles/sass/mixins.scss';
 
-.profile{
-    background-color: $bgColor;
-    display: grid;
-    grid-template-rows: 1fr 10fr;
-    .profileContainer{
-        margin: 30px 0 0 0;
-    }
+.profile {
+  background-color: $bgColor;
+  display: grid;
+  grid-template-rows: 1fr 10fr;
+
+  .profileContainer {
+    margin: 30px 0 0 0;
+  }
 }
 
 

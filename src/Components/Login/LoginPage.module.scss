@@ -2,27 +2,29 @@
 @import '../../styles/sass/mixins.scss';
 
 
-.loginContainer{
-    display: grid;
-    justify-content: center;
-    justify-items: center;
-    margin-top: 30px;
-    background-color: $blokColor;
-    padding: 15px;
-    border-radius: 5px;
-    & h1{
-        @include text (25px, 500, 1);
-        margin: 0 0 15px;
-        position: relative;
-    &::after{
-        content: '';
-        position: absolute;
-        background: $primaryColor;
-        width: 55px;
-        height: 1px ;
-        bottom: -15px;
-        transform: translate(-50%, 50%);
-        left: 50%;
+.loginContainer {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 30px;
+  background-color: $blokColor;
+  padding: 15px;
+  border-radius: 5px;
+
+  & h1 {
+    @include text(25px, 500, 1);
+    margin: 0 0 15px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      background: $primaryColor;
+      width: 55px;
+      height: 1px;
+      bottom: -15px;
+      transform: translate(-50%, 50%);
+      left: 50%;
     }
-    }
+  }
 }
