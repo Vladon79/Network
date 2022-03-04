@@ -18,48 +18,48 @@ import Preloader from "./Components/common/Preloader/Preloader";
 
 
 type AppType = {
-  // store: AppStoreType
-  //store: Store<any, ActionType>
-  store: any,
-  initializeApp:()=>void
-  initializet:boolean
+    // store: AppStoreType
+    //store: Store<any, ActionType>
+    store: any,
+    initializeApp: () => void
+    initializet: boolean
 }
 
 class App extends React.Component<AppType> {
-  componentDidMount() {
-      this.props.initializeApp()
-  }
+    componentDidMount() {
+        this.props.initializeApp()
+    }
 
-  render() {
-   if (!this.props.initializet) {
-     return <Preloader/>
-   }
+    render() {
+        if (!this.props.initializet) {
+            return <Preloader/>
+        }
 
-    return (
+        return (
 
-          <div className='app-wrapper'>
-            <HeaderContainer/>
-            <Navbar/>
-            <div className='app-wrapper-content'>
-              <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
-              <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-              <Route path='/news' render={() => <News/>}/>
-              <Route path='/music' render={() => <Music/>}/>
-              <Route path='/setting' render={() => <Setting/>}/>
-              <Route path='/users' render={() => <UsersContainer/>}/>
-              <Route path='/login' render={() => <LoginPage/>}/>
+            <div className='app-wrapper'>
+                <HeaderContainer/>
+                <Navbar/>
+                <div className='app-wrapper-content'>
+                    <Route path='/profile/:userID?' render={() => <ProfileContainer/>}/>
+                    <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                    <Route path='/news' render={() => <News/>}/>
+                    <Route path='/music' render={() => <Music/>}/>
+                    <Route path='/setting' render={() => <Setting/>}/>
+                    <Route path='/users' render={() => <UsersContainer/>}/>
+                    <Route path='/login' render={() => <LoginPage/>}/>
+                </div>
             </div>
-          </div>
 
-    );
-  }
+        );
+    }
 }
 
-const mapStateToProps = (state:AppStoreType)=>({
-  initializet: state.app.initializet
+const mapStateToProps = (state: AppStoreType) => ({
+    initializet: state.app.initializet
 })
 
 export default compose(
-    connect(mapStateToProps, {  initializeApp })(App)
+    connect(mapStateToProps, {initializeApp})(App)
 );
 

@@ -47,7 +47,6 @@ const InitialState: usersPageType = {
 }
 
 export const usersReducer = (state: usersPageType = InitialState, action: ActionType): usersPageType => {
-
     switch (action.type) {
         case 'FOLLOW-USER': {
             return {

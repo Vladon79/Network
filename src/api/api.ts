@@ -1,6 +1,5 @@
 import axios from "axios";
 import {LoginFormPropsType} from "../Components/Login/LoginForm/LoginForm";
-import image from "../assents/image/Typescript_logo.png"
 
 
 const instance = axios.create({
