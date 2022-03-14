@@ -39,15 +39,14 @@ export type UserType = {
 }
 const InitialState: usersPageType = {
     users: [],
-    pageSize: 10,
-    totalUsersCount: 0,
+    pageSize: 30,
+    totalUsersCount: 200,
     currentPage: 1,
     isFetching: true,
     followingInProgress: []
 }
 
 export const usersReducer = (state: usersPageType = InitialState, action: ActionType): usersPageType => {
-
     switch (action.type) {
         case 'FOLLOW-USER': {
             return {
@@ -153,8 +152,7 @@ export const requestUsers = (currentPage: number, pageSize: number) => async (di
     const data = await usersAPI.getUsers(currentPage, pageSize)
     dispatch(toggleIsFetching(false))
     dispatch(setUsers(data.items))
-    dispatch(setTotalUsersCount(200))
-
+    dispatch(setTotalUsersCount(data.totalCount))
 }
 
 const followUnfollowFlow = async (dispatch: DispatchType, id: number, apiMethod: any, actionCreate: any) => {

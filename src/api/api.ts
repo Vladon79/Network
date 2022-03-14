@@ -1,6 +1,5 @@
 import axios from "axios";
 import {LoginFormPropsType} from "../Components/Login/LoginForm/LoginForm";
-import image from "../assents/image/Typescript_logo.png"
 
 
 const instance = axios.create({
@@ -13,7 +12,7 @@ const instance = axios.create({
 
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`,
+        return instance.get(`users?page=${currentPage}&count=${30}`,
         ).then(response => response.data)
     },
     followToUser(id: number) {

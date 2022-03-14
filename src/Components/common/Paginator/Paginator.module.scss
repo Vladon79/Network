@@ -2,6 +2,7 @@
 @import '../../../styles/sass/mixins.scss';
 
 .pageNumber {
+  margin: 15px;
   display: flex;
   justify-content: center;
   @include text(14px, 500, 1.2);

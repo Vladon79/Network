@@ -7,7 +7,7 @@ const state: usersPageType = {
         {id: 3, followed: true, status: 'help', name: 'Dima', ava: 'string'}
     ],
     pageSize: 10,
-    totalUsersCount: 0,
+    totalUsersCount: 200,
     currentPage: 1,
     isFetching: true,
     followingInProgress: []
