@@ -35,8 +35,5 @@ export const initializetSuccess = () => {
 
 export const initializeApp = () => (dispatch: any) => {
     let promise = dispatch(authMe())
-
     Promise.all([promise]).then(() => dispatch(initializetSuccess()))
-
-
 }
