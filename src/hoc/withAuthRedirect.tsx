@@ -1,5 +1,5 @@
 import React, {ComponentType} from "react";
-import {connect, useSelector} from "react-redux";
+import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {AppStoreType} from "../redux/redux-store";
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state: AppStoreType): MapStatePropsType => {
     }
 }
 
-function withAuthRedirect1<T>(Component: ComponentType<T>) {
+function withAuthRedirect<T>(Component: ComponentType<T>) {
 
     class WraperContainer extends React.Component<MapStatePropsType> {
         render(): React.ReactNode {
@@ -28,4 +28,4 @@ function withAuthRedirect1<T>(Component: ComponentType<T>) {
 }
 
 
-export default withAuthRedirect1
+export default withAuthRedirect
