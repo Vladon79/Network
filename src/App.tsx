@@ -43,7 +43,7 @@ class App extends React.Component<AppType> {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Redirect from="about" to="/profile/:userID?" />
+                    <Redirect from="about" to="/profile/" />
                     <Route path='/profile/:userID?' render={withSuspense(ProfileContainer)}/>
                     <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
                     <Route path='/news' render={() => <News/>}/>
