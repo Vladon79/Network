@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import {Route} from 'react-router-dom';
+import {Redirect, Route} from 'react-router-dom';
 import {compose} from 'redux';
 import './App.css';
 import HeaderContainer from './Components/Header/HeaderContainer';
@@ -43,6 +43,7 @@ class App extends React.Component<AppType> {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
+                    <Redirect from="about" to="/profile/:userID?" />
                     <Route path='/profile/:userID?' render={withSuspense(ProfileContainer)}/>
                     <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
                     <Route path='/news' render={() => <News/>}/>
