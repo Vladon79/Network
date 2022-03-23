@@ -1,5 +1,6 @@
 import {profileAPI, usersAPI} from "../api/api";
 import {ActionType, DispatchType, postType} from "../types/types"
+import profile from "../Components/Profile/Profile";
 
 
 export type postPageType = {
@@ -42,6 +43,8 @@ export const profileReducer = (state: postPageType = InitialState, action: Actio
 
         case 'SET-STATUS':
             return {...state, status: action.status}
+        case 'SAVE-PHOTO':
+            return {...state, profile: {...state.profile, photos: action.photo}}
 
         default:
             return state;
@@ -76,6 +79,13 @@ export const setStatus = (status: string) => {
     } as const
 }
 
+export const savePhotoSuccess = (photo: any) => {
+    return {
+        type: 'SAVE-PHOTO',
+        photo
+    } as const
+}
+
 
 export const getUserProfile = (userID: string) => async (dispatch: DispatchType) => {
     const data = await usersAPI.getProfile(userID)
@@ -92,6 +102,12 @@ export const updateStatus = (status: string) => async (dispatch: DispatchType) =
     const response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status))
+    }
+}
+export const savePhoto = (photo: any) => async (dispatch: DispatchType) => {
+    const response = await profileAPI.savePhoto(photo)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos))
     }
 }
 

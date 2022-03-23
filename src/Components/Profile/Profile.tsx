@@ -16,11 +16,13 @@ export type ProfileType = {
 
 type PostType = {
     profile: ProfileType
+    isOwner:boolean
     post: Array<postType>
     status: string
     newPostChange: (text: string) => void
     addPost: (text: string) => void
     updateStatus: (status: string) => void
+    savePhoto: (photo: any) => void
 }
 
 const Profile = (props: PostType) => {
@@ -28,7 +30,7 @@ const Profile = (props: PostType) => {
     return (
         <div className={s.profile}>
             <div className={s.profileContainer}>
-                <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+                <ProfileInfo isOwner={props.isOwner} profile={props.profile} status={props.status} updateStatus={props.updateStatus} savePhoto={props.savePhoto}/>
                 <MyPost
                     post={props.post}
                     newPostChange={props.newPostChange}

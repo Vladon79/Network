@@ -9,7 +9,14 @@ import {
     toggleIsFollowingProgess,
     usersPageType
 } from "../redux/users-reducer";
-import {addPost, deletePost, postPageType, setStatus, setUsersProfile} from "../redux/profile-reducer";
+import {
+    addPost,
+    deletePost,
+    postPageType,
+    savePhotoSuccess,
+    setStatus,
+    setUsersProfile
+} from "../redux/profile-reducer";
 import {authMe, setAuthUserData} from "../redux/auth-reduser";
 import {Dispatch} from "react";
 import {initializetSuccess} from "../redux/app-reducer";
@@ -69,7 +76,8 @@ export type ActionType = AddPostActionType |
     toggleIsFollowingProgessActionType |
     setStatusActionType |
     setUserDataActionType |
-    initializetSuccessActionType;
+    initializetSuccessActionType |
+    savePhotoSuccessActionType;
 
 export type deletePostActionType = ReturnType<typeof deletePost>
 
@@ -98,3 +106,4 @@ export type AddPostActionType = ReturnType<typeof addPost>;
 export type SendMessageType = ReturnType<typeof SendMessageAC>;
 
 export type setStatusActionType = ReturnType<typeof setStatus>;
+export type savePhotoSuccessActionType = ReturnType<typeof savePhotoSuccess>;
