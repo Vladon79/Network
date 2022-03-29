@@ -23,6 +23,7 @@ type PostType = {
     addPost: (text: string) => void
     updateStatus: (status: string) => void
     savePhoto: (photo: any) => void
+    saveProfile:(formData:ProfileType)=>void
 }
 
 const Profile = (props: PostType) => {
@@ -30,7 +31,7 @@ const Profile = (props: PostType) => {
     return (
         <div className={s.profile}>
             <div className={s.profileContainer}>
-                <ProfileInfo isOwner={props.isOwner} profile={props.profile} status={props.status} updateStatus={props.updateStatus} savePhoto={props.savePhoto}/>
+                <ProfileInfo saveProfile={props.saveProfile} isOwner={props.isOwner} profile={props.profile} status={props.status} updateStatus={props.updateStatus} savePhoto={props.savePhoto}/>
                 <MyPost
                     post={props.post}
                     newPostChange={props.newPostChange}

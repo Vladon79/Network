@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import {compose} from 'redux';
 import './App.css';
 import HeaderContainer from './Components/Header/HeaderContainer';
@@ -28,6 +28,7 @@ type AppType = {
 }
 
 class App extends React.Component<AppType> {
+
     componentDidMount() {
         this.props.initializeApp()
     }
@@ -43,14 +44,18 @@ class App extends React.Component<AppType> {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Redirect from="about" to="/profile/" />
-                    <Route path='/profile/:userID?' render={withSuspense(ProfileContainer)}/>
-                    <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
-                    <Route path='/news' render={() => <News/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-                    <Route path='/setting' render={() => <Setting/>}/>
-                    <Route path='/users' render={withSuspense(UsersContainer)}/>
-                    <Route path='/login' render={() => <LoginPage/>}/>
+                    <Switch>
+                        {/*<Redirect from="about" to="/profile/"/>*/}
+                        <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
+                        <Route path='/profile/:userID?' render={withSuspense(ProfileContainer)}/>
+                        <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
+                        <Route path='/news' render={() => <News/>}/>
+                        <Route path='/music' render={() => <Music/>}/>
+                        <Route path='/setting' render={() => <Setting/>}/>
+                        <Route path='/users' render={withSuspense(UsersContainer)}/>
+                        <Route path='/login' render={() => <LoginPage/>}/>
+                        <Route path='*' render={() => <div>404 Not found</div>}/>
+                    </Switch>
                 </div>
             </div>
 

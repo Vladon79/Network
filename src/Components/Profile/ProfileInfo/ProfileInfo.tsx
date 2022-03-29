@@ -1,18 +1,27 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.scss';
 import userPhoto from './../../../assents/image/user.png'
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import {ProfileType} from "../Profile";
+import ProfileData from "./ProfileData/ProfileData";
+import ProfileDataReduxForm from "./ProfileData/ProfileDataForm";
 
 type ProfileInfoType = {
-    profile: any
+    profile: ProfileType
     status: string
     updateStatus: (status: string) => void
     isOwner: boolean
     savePhoto: (photo: any) => void
+    saveProfile: (formData: ProfileType) => void
 }
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: ProfileInfoType) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}: ProfileInfoType) => {
+
+    const [editMode, setEditMode] = useState<boolean>(false)
+
+    const goToEditMode = () => {
+        setEditMode(true)
+    }
 
     if (!profile) {
         return <Preloader/>
@@ -22,17 +31,35 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}: Profil
             savePhoto(e.target.files[0])
         }
     }
+
+    const onSubmit = (formData: ProfileType) => {
+        //@ts-ignore
+        saveProfile(formData).then(() => {
+            setEditMode(false)
+        })
+    }
     return (
         <div className={s.PrfileInfo}>
             <div className={s.PrfileInfoImg}>
                 <img className={s.ava} src={profile.photos.large || userPhoto}/>
+                {!!isOwner && <input className={s.inputFile} type={'file'} onChange={onMainPhotoSelected}/>}
             </div>
+
             <div className={s.discriptionInfo}>
-                <h5 className={s.name}>Vlad Klopot</h5>
-                {!!isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
-                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+
+                {editMode
+                    ? <ProfileDataReduxForm profile={profile} onSubmit={onSubmit} initialValues={profile}/>
+                    : <div>
+                        <ProfileData status={status} updateStatus={updateStatus}
+                                     profile={profile} isOwner={isOwner}
+                                     goToEditMode={goToEditMode}/>
+
+                    </div>}
+
             </div>
         </div>
     )
 }
+
+
 export default ProfileInfo;

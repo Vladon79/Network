@@ -17,7 +17,7 @@ import {
     setStatus,
     setUsersProfile
 } from "../redux/profile-reducer";
-import {authMe, setAuthUserData} from "../redux/auth-reduser";
+import {authMe, getCaptchaUrlSuccess, setAuthUserData} from "../redux/auth-reduser";
 import {Dispatch} from "react";
 import {initializetSuccess} from "../redux/app-reducer";
 
@@ -77,9 +77,11 @@ export type ActionType = AddPostActionType |
     setStatusActionType |
     setUserDataActionType |
     initializetSuccessActionType |
+    getCaptchaUrlSuccessActionType |
     savePhotoSuccessActionType;
 
 export type deletePostActionType = ReturnType<typeof deletePost>
+export type getCaptchaUrlSuccessActionType = ReturnType<typeof getCaptchaUrlSuccess>
 
 export type initializetSuccessActionType = ReturnType<typeof initializetSuccess>
 

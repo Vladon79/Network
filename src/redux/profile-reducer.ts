@@ -1,6 +1,7 @@
 import {profileAPI, usersAPI} from "../api/api";
 import {ActionType, DispatchType, postType} from "../types/types"
-import profile from "../Components/Profile/Profile";
+import profile, {ProfileType} from "../Components/Profile/Profile";
+import {stopSubmit} from "redux-form";
 
 
 export type postPageType = {
@@ -108,6 +109,18 @@ export const savePhoto = (photo: any) => async (dispatch: DispatchType) => {
     const response = await profileAPI.savePhoto(photo)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
+    }
+}
+
+export const saveProfile = (profile: ProfileType) => async (dispatch: any, getState:any) => {
+    const userID = getState().auth.id
+    const response = await profileAPI.saveProfile(profile)
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userID))
+    } else {
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : 'someError'
+        dispatch(stopSubmit('edit-profile', {_error: message}))
+        return Promise.reject(message)
     }
 }
 

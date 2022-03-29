@@ -10,11 +10,16 @@ export type LoginFormPropsType = {
     email: string
     password: string
     rememberMe: boolean
+    captcha: string | null
+}
+
+export type LoginPropsType = {
+    captchaUrl: string | null
 }
 
 const maxLength30 = maxLengthCreator(30)
 
-const LoginForm: React.FC<InjectedFormProps<LoginFormPropsType>> = (props) => {
+const LoginForm: React.FC<InjectedFormProps<LoginFormPropsType, LoginPropsType> & LoginPropsType> = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
             <div>
@@ -28,6 +33,10 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormPropsType>> = (props) => {
             <div>
                 <Field type={'checkbox'} component={'input'} name={'rememberMe'} className={s.checkbox}/> remember me
             </div>
+            {props.captchaUrl && <img src={props.captchaUrl}/>}
+            {props.captchaUrl && <Field placeholder={'Symbols from image'} name={'captcha'} component={Input}
+                                        validate={[required]}
+                                        className={s.input}/>}
             {props.error && <div className={style.formSummaryError}>
                 {props.error}
             </div>}
@@ -39,5 +48,5 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormPropsType>> = (props) => {
 }
 
 
-const ReduxLoginForm = reduxForm<LoginFormPropsType>({form: 'login'})(LoginForm)
+const ReduxLoginForm = reduxForm<LoginFormPropsType, LoginPropsType>({form: 'login'})(LoginForm)
 export default ReduxLoginForm;

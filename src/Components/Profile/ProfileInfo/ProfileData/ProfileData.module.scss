@@ -1,0 +1,23 @@
+@import '../../../../styles/sass/mixins.scss';
+@import '../../../../styles/sass/variables.scss';
+
+.profileData {
+  display: flex;
+  width: 100%;
+
+  .left {
+    .fullName {
+      @include text(24px, 500, 1.2);
+      margin: 80px 0 15px;
+      color: $primaryColor;
+      font-weight: bolder;
+    }
+  }
+
+  .right {
+    .contact{
+      margin-left: 20px;
+    }
+  }
+
+}

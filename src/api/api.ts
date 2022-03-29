@@ -1,5 +1,6 @@
 import axios from "axios";
 import {LoginFormPropsType} from "../Components/Login/LoginForm/LoginForm";
+import {ProfileType} from "../Components/Profile/Profile";
 
 
 const instance = axios.create({
@@ -47,6 +48,9 @@ export const profileAPI = {
                 'Content-Type':'multipart/from-data'
             }
         })
+    },
+    saveProfile(profile:ProfileType){
+        return instance.put(`profile`, profile)
     }
 }
 
@@ -56,11 +60,17 @@ export const authAPI = {
             .then(response => response.data)
     },
     login(formData: LoginFormPropsType) {
-        return instance.post(`/auth/login`, formData)
+        return instance.post(`auth/login`, formData)
 
     },
     logout() {
-        return instance.delete(`/auth/login`)
+        return instance.delete(`auth/login`)
             .then(response => response.data)
+    }
+}
+
+export const securityAPI= {
+    getCaptchaUrl(){
+        return instance.get(`security/get-captcha-url`)
     }
 }
