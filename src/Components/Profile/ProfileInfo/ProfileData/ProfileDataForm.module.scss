@@ -1,0 +1,36 @@
+@import '../../../../styles/sass/mixins.scss';
+@import '../../../../styles/sass/variables.scss';
+
+.profileDataForm {
+  .profileData {
+    display: flex;
+    justify-content: space-between;
+
+    .textarea {
+      @include text(15px, 500, 1.2);
+      background-color: $inputColor;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 10px;
+      resize: none;
+    }
+
+    .input {
+      @include text(15px, 500, 1.2);
+      background-color: $inputColor;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 10px;
+
+    }
+  }
+
+  .buttonBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .button{
+      width: 40%;
+    }
+  }
+}

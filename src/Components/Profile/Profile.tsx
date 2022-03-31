@@ -10,7 +10,7 @@ export type ProfileType = {
     fullName: string
     lookingForAJob: boolean
     lookingForAJobDescription: string
-    photos: { small: string, large: string }
+    photos: { small: any, large: any }
     userId: number
 }
 
@@ -27,12 +27,14 @@ type PostType = {
 }
 
 const Profile = (props: PostType) => {
-
+    console.log(props.profile)
+debugger
     return (
         <div className={s.profile}>
             <div className={s.profileContainer}>
                 <ProfileInfo saveProfile={props.saveProfile} isOwner={props.isOwner} profile={props.profile} status={props.status} updateStatus={props.updateStatus} savePhoto={props.savePhoto}/>
                 <MyPost
+                    profile={props.profile}
                     post={props.post}
                     newPostChange={props.newPostChange}
                     addPost={props.addPost}

@@ -27,15 +27,15 @@ export type usersPageType = {
     followingInProgress: Array<number>
 }
 export type UserType = {
-    id: number
     followed: boolean
-    status?: string
-    location?: {
-        city: string
-        country: string
-    }
+    id: number
     name: string
-    ava: string
+    photos: {
+        large: string
+        small: string
+    }
+    status: null | string
+    uniqueUrlName: null | string
 }
 const InitialState: usersPageType = {
     users: [],

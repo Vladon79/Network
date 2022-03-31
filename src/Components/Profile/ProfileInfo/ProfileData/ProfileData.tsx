@@ -24,23 +24,27 @@ const ProfileData = ({updateStatus, status, profile, isOwner, goToEditMode}: Pro
                 <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </section>
             <section className={s.right}>
-                <section>
+                <section className={s.dataValue}>
                     <b>looking for a job:</b>{profile.lookingForAJob ? "Yes" : 'No'}
                 </section>
-                {profile.lookingForAJob && <section>
+                {profile.lookingForAJob && <section className={s.dataValue}>
                     <b>My professional skills:</b>{profile.lookingForAJobDescription ? "Yes" : 'No'}
                 </section>
                 }
-                <section>
+                <section className={s.dataValue}>
                     <b>About me:</b>{profile.aboutMe}
                 </section>
-                <section>
+                <section className={s.contacts}>
                     <b>Contacts</b>:{Object.keys(profile.contacts).map(key => {
                     //@ts-ignore
-                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                    if (profile.contacts[key] !== null) {
+                        //@ts-ignore
+                        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                    }
                 })}
-                    {isOwner && <Button title={"Edit"} onClick={goToEditMode}></Button>}
+
                 </section>
+                {isOwner && <Button title={"Edit"} onClick={goToEditMode} className={s.button}></Button>}
             </section>
         </div>
     )

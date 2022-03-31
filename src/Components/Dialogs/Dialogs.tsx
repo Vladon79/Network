@@ -62,7 +62,7 @@ const DialogsForm: React.FC<InjectedFormProps<DialogsFormPropsType>> = (props) =
                        validate={[required, maxLength200]} className={s.input}/>
             </div>
             <div>
-                <button>Send</button>
+                <Button title={'Send'}></Button>
                 {/* <Button title={'Login'} onClick={}/> */}
             </div>
         </form>

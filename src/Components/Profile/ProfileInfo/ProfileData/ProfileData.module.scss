@@ -4,20 +4,46 @@
 .profileData {
   display: flex;
   width: 100%;
+  justify-content: space-around;
+
+  b {
+    margin-bottom: 20px;
+    color: $primaryColor;
+  }
 
   .left {
     .fullName {
       @include text(24px, 500, 1.2);
       margin: 80px 0 15px;
-      color: $primaryColor;
+      //color: $primaryColor;
       font-weight: bolder;
     }
   }
 
   .right {
-    .contact{
-      margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    .dataValue {
+      margin-top: 5px;
+    }
+
+    .contacts {
+      margin-top: 20px;
+
+      .contact {
+        @include text(15px, 500, 1.2);
+        margin-left: 20px;
+      }
+    }
+
+    .button {
+      margin-top: 20px;
     }
   }
 
 }
+
+

@@ -3,7 +3,6 @@
 
 
 .PrfileInfo {
-  height: 350px;
   display: grid;
   grid-template-columns: 250px 1fr;
 
@@ -21,9 +20,24 @@
       height: 220px;
       width: 220px;
     }
-    .inputFile{
+
+    .inputFileBlock {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+
+      .newPhotoButton {
+        height: min-content;
+        padding: 4px 20px;
+      }
+
+      .inputFile {
+        display: none;
+      }
 
     }
+
   }
 
   .discriptionInfo {
@@ -37,6 +51,10 @@
 }
 
 .profileStatus {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $primaryColor;
 
   .statusText {
     @include text(16px, 500, 26px);

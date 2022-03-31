@@ -3,6 +3,7 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validator";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 import s from './MyPost.module.scss';
+import Button from "../../common/Button/Button";
 
 export type TextareaPropsType = {
     newPost: string
@@ -18,7 +19,7 @@ const MyPostTextareaForm: React.FC<InjectedFormProps<TextareaPropsType>> = (prop
                        validate={[required, maxLength30]}/>
             </div>
             <div>
-                <button>Login</button>
+                <Button title={'Send'} className={s.button}/>
             </div>
         </form>
     )
