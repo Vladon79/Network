@@ -14,7 +14,6 @@ type UserPagePropsType = {
 }
 
 const User = ({user, ...props}: UserPagePropsType) => {
-    console.log(user)
     return (
         <div className={s.userPage}>
             <div className={s.avaButton}>

@@ -27,8 +27,6 @@ type PostType = {
 }
 
 const Profile = (props: PostType) => {
-    console.log(props.profile)
-debugger
     return (
         <div className={s.profile}>
             <div className={s.profileContainer}>

@@ -19,7 +19,6 @@ const MyPost = React.memo((props: MyPostType) => {
     const onAddPost = ({newPost}: TextareaPropsType) => {
         props.addPost(newPost)
     }
-    debugger
     return (
         <div className={s.mypost}>
             <div className={s.mypostContainer}>
