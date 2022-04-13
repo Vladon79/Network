@@ -1,9 +1,8 @@
-import React, {ChangeEvent} from 'react';
+import React from 'react';
 import DialogItem from './DialogItem/DialogItem';
 import s from './Dialogs.module.scss';
 import Messages from './Message/Message';
 import {dialogsType, messagesType} from '../../types/types';
-import {Redirect} from 'react-router-dom';
 import Button from '../common/Button/Button';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import {Textarea} from '../common/FormsControls/FormsControls';
@@ -56,14 +55,12 @@ const maxLength200 = maxLengthCreator(200)
 const DialogsForm: React.FC<InjectedFormProps<DialogsFormPropsType>> = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.form}>
-            {/* e.prevendDefault:сбор всех данных,упаковываются в обьект: контейнерная компонента вызывает onSubmit(formData) */}
             <div>
                 <Field placeholder={'New message'} name={'newMessage'} component={Textarea}
                        validate={[required, maxLength200]} className={s.input}/>
             </div>
             <div>
                 <Button title={'Send'}></Button>
-                {/* <Button title={'Login'} onClick={}/> */}
             </div>
         </form>
     )
