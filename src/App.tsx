@@ -20,9 +20,7 @@ const ProfileContainer = React.lazy(() => import('./Components/Profile/ProfileCo
 const UsersContainer = React.lazy(() => import('./Components/Users/UsersContainer'));
 
 type AppType = {
-    // store: AppStoreType
-    //store: Store<any, ActionType>
-    store: any,
+    store: any
     initializeApp: () => void
     initializet: boolean
 }
@@ -45,7 +43,6 @@ class App extends React.Component<AppType> {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Switch>
-                        {/*<Redirect from="about" to="/profile/"/>*/}
                         <Route exact path='/' render={() => <Redirect to={'/profile'}/>}/>
                         <Route path='/profile/:userID?' render={withSuspense(ProfileContainer)}/>
                         <Route path='/dialogs' render={withSuspense(DialogsContainer)}/>
