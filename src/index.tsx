@@ -9,11 +9,11 @@ import {BrowserRouter, HashRouter} from "react-router-dom";
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={reduxStore}>
                 <App store={reduxStore}/>
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>,
     document.getElementById('root')
 );
